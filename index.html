@@ -1,742 +1,527 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ravel Softworks: Agentic AI & Process Automation Studio</title>
-  <meta name="description" content="Ravel Softworks builds Agentic AI systems and process automations that take the busywork off your team. Bengaluru-based, working with businesses worldwide.">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#070A12" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#EEF2F8" media="(prefers-color-scheme: light)">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravel Softworks | Software Development Outsourcing &amp; AI Automation Company, Bengaluru</title>
+<meta name="description" content="Ravel Softworks is a Bengaluru software, AI and IT engineering company. Software development outsourcing, AI automation, AI implementation and cloud for businesses in India, the US, the UK and Europe.">
+<!-- TODO(domain): replace https://www.ravelsoftworks.com everywhere in this file, sitemap.xml and robots.txt with the live domain. -->
+<link rel="canonical" href="https://www.ravelsoftworks.com/">
+<meta name="theme-color" content="#F3F1EB">
+<meta name="robots" content="index, follow">
 
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ravel Softworks">
+<meta property="og:title" content="Ravel Softworks: software, AI and IT, engineered as one structure">
+<meta property="og:description" content="Software development outsourcing, AI automation and IT services from Bengaluru, for businesses in India, the US, the UK and Europe.">
+<meta property="og:url" content="https://www.ravelsoftworks.com/">
+<meta property="og:image" content="https://www.ravelsoftworks.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
-  <!-- Social preview -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Ravel Softworks: Agentic AI & Process Automation Studio">
-  <meta property="og:description" content="Agentic AI systems that take the busywork off your team. Bengaluru-based, working with businesses worldwide.">
-  <meta property="og:image" content="logo-mark.png">
-  <meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Set the theme before first paint so light-mode visitors never see a dark flash -->
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('ravel_theme');
-        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        document.documentElement.dataset.theme = theme;
-      } catch (e) { /* private mode: keep the dark default */ }
-    })();
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/scrollcraft.css">
+<link rel="stylesheet" href="assets/site.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://www.ravelsoftworks.com/#org",
+      "name": "Ravel Softworks",
+      "url": "https://www.ravelsoftworks.com/",
+      "email": "contact@ravelsoftworks.com",
+      "logo": "https://www.ravelsoftworks.com/logo-ravel.png",
+      "image": "https://www.ravelsoftworks.com/og-image.png",
+      "description": "Software development outsourcing, AI automation, AI implementation, cloud and IT services for companies, organisations and businesses.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
+      "areaServed": ["IN", "US", "GB", "EU"],
+      "knowsAbout": ["Software development outsourcing", "Custom software development", "AI automation", "AI agents", "AI implementation", "Large language model integration", "Workflow automation", "Cloud and DevOps", "IT support"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Software, AI and IT services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom software development", "description": "Web apps, mobile apps, SaaS products and internal tools." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dedicated development team", "description": "Software development outsourcing with engineers who join your roadmap." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI automation and AI agents", "description": "Agents and workflows that take repetitive operational work off your team." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI implementation", "description": "Language models connected to your documents, data and tools, with evaluation and guardrails." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integrations and data", "description": "APIs, CRM and ERP integrations, data pipelines and reporting." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud, DevOps and IT support", "description": "Cloud setup and migration, CI/CD, monitoring, maintenance and support." } }
+        ]
+      }
+    },
+    { "@type": "WebSite", "@id": "https://www.ravelsoftworks.com/#site", "url": "https://www.ravelsoftworks.com/", "name": "Ravel Softworks", "publisher": { "@id": "https://www.ravelsoftworks.com/#org" } },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Do you work with companies outside India?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are based in Bengaluru and work with companies in India, the United States, the United Kingdom and Europe, with working hours that overlap yours for calls and reviews." } },
+        { "@type": "Question", "name": "How do you price a project?", "acceptedAnswer": { "@type": "Answer", "text": "Well-defined projects get a fixed price. Dedicated teams and ongoing support are billed monthly. Either way, you receive a written scope and estimate before any work starts." } },
+        { "@type": "Question", "name": "What does AI automation mean in practice?", "acceptedAnswer": { "@type": "Answer", "text": "Software agents that do a defined piece of work end to end: reading documents and emails, updating your systems, drafting replies or reports, and asking a person when something falls outside the rules you set." } },
+        { "@type": "Question", "name": "Is our data safe if we use AI?", "acceptedAnswer": { "@type": "Answer", "text": "We design around your data policies: business-tier model APIs that do not train on your data, private deployments where needed, access limited to what each workflow requires, and logs of every action an agent takes." } },
+        { "@type": "Question", "name": "Can you work with our existing systems?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most of our work connects to software you already use, such as your CRM, ERP, accounting tools, databases and cloud accounts, rather than replacing it." } },
+        { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Source code, accounts, data and documentation belong to you, and live in your repositories and cloud accounts wherever possible." } },
+        { "@type": "Question", "name": "Will you sign an NDA?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, before you share anything sensitive." } },
+        { "@type": "Question", "name": "What happens after launch?", "acceptedAnswer": { "@type": "Answer", "text": "You choose. We can stay on for monitoring, support and improvements, or hand over to your team with documentation and a walkthrough." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-  <a href="#main" class="skip-link">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- Ambient background -->
-  <div class="mac-wallpaper-mesh" aria-hidden="true"></div>
-  <div class="glow-orb orb-1" aria-hidden="true"></div>
-  <div class="glow-orb orb-2" aria-hidden="true"></div>
-
-  <!-- NAVBAR -->
-  <header class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#hero" class="brand-logo">
-        <img src="logo-mark.png" alt="" width="34" height="34" class="logo-img" aria-hidden="true">
-        <span class="brand-name">RAVEL <span class="brand-sub">SOFTWORKS</span></span>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="Ravel Softworks home">
+      <img src="logo-mark.png" alt="" width="30" height="30">
+      <span>Ravel <b>Softworks</b></span>
+    </a>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#automation">AI automation</a>
+      <a href="#process">How we work</a>
+      <a href="#why">Why us</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--ghost js-wa" href="#" hidden target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.7-.3Z"/></svg>
+        <span>WhatsApp</span>
       </a>
+      <a class="btn" href="#start">Start a project</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-      <nav class="nav-links" id="nav-links" aria-label="Main">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#why-us" class="nav-link">Why us</a>
-        <a href="#process" class="nav-link">Process</a>
-        <a href="#calculator" class="nav-link">ROI estimator</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
+<main id="main">
 
-      <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">
-          <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
-          <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
-        </button>
+  <!-- HERO: pinned. The exploded R settles into one structure. -->
+  <section class="hero" id="top" data-sc-act="pin" data-sc-span="1.6">
+    <div data-sc-stage class="hero__stage">
+      <div class="hero__copy">
+        <p class="badge"><span class="badge__dot" aria-hidden="true"></span> Software, AI &amp; IT engineering · Bengaluru</p>
+        <h1 class="hero__h1">We engineer the software and AI your business runs&nbsp;on.</h1>
+        <p class="hero__sub">Software development outsourcing, AI automation and IT services for companies in India, the US, the UK and&nbsp;Europe.</p>
+        <p class="hero__actions">
+          <a class="btn btn--lg" href="#start">Start a project</a>
+          <a class="btn btn--lg btn--ghost" href="#automation">See AI automation at work</a>
+        </p>
+      </div>
 
-        <button class="btn btn-primary btn-icon-collapse" id="open-whatsapp-drawer" aria-label="Chat on WhatsApp">
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-          <span class="btn-label">Chat on WhatsApp</span>
-        </button>
-
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-          <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
+      <div class="hero__art" aria-hidden="false">
+        <div class="hero__far" aria-hidden="true"></div>
+        <svg class="hero__svg" id="hero-r" viewBox="-340 -330 700 560" role="img" aria-label="The Ravel R built from three groups of blocks: software engineering, AI and automation, and IT and cloud."></svg>
+        <div class="hero__near" aria-hidden="true">
+          <svg class="near near--a" viewBox="-40 -52 80 92"></svg>
+          <svg class="near near--b" viewBox="-40 -52 80 92"></svg>
+          <svg class="near near--c" viewBox="-40 -52 80 92"></svg>
+        </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero-section" id="hero" aria-labelledby="hero-title">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <p class="hero-badge animate-fade-in">
-            <i class="fa-solid fa-layer-group badge-icon" aria-hidden="true"></i>
-            <span>Agentic AI &amp; automation studio</span>
-            <span class="badge-location">
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Bengaluru, India
-            </span>
-          </p>
+  <!-- TRUST STRIP -->
+  <section class="trust" aria-label="What you can count on">
+    <ul class="trust__list sc-wrap" data-sc-in data-sc-stagger="60">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><b>Reply within one business day</b><span>No ticket queues</span></p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4-8-4Z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/></svg><p><b>Software, AI and IT in one team</b><span>No vendor hand-offs</span></p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg><p><b>India, US, UK &amp; Europe</b><span>Hours that overlap yours</span></p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><p><b>NDA before details</b><span>You own the code</span></p></li>
+    </ul>
+  </section>
 
-          <h1 class="hero-title animate-fade-in delay-1" id="hero-title">
-            Your business,<br>
-            <span class="gradient-text glow-text">on autopilot.</span>
-          </h1>
-
-          <p class="hero-description animate-fade-in delay-2">
-            Ravel Softworks builds <strong>agentic AI systems</strong> that take the busywork off your team, so
-            they spend their days on growth instead of grunt work. Based in Bengaluru, built for businesses
-            everywhere.
-          </p>
-
-          <div class="hero-ctas animate-fade-in delay-3">
-            <button class="btn btn-lg btn-gradient" id="hero-wa-btn">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-              <span>Talk to us on WhatsApp</span>
-            </button>
-            <a href="#process" class="btn btn-lg btn-outline">
-              <span>See how it works</span>
-              <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Workflow simulator -->
-        <div class="hero-visual animate-fade-in delay-2" id="simulator">
-          <div class="simulator-card glass-panel glow-border">
-            <div class="mac-window-header">
-              <div class="window-controls" aria-hidden="true">
-                <span class="control close"></span>
-                <span class="control minimize"></span>
-                <span class="control expand"></span>
-              </div>
-              <p class="window-title">
-                <i class="fa-solid fa-microchip" aria-hidden="true"></i>
-                <span>Agentic workflow engine</span>
-              </p>
-              <p class="window-status">
-                <span class="status-indicator" aria-hidden="true"></span>
-                <span>Live sample</span>
-              </p>
-            </div>
-
-            <div class="workflow-tabs mac-segmented-control" role="tablist" aria-label="Example workflows">
-              <button class="tab-btn" role="tab" id="tab-onboarding" aria-selected="true" aria-controls="workflow-canvas" data-preset="onboarding">
-                <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Onboarding
-              </button>
-              <button class="tab-btn" role="tab" id="tab-leads" aria-selected="false" aria-controls="workflow-canvas" data-preset="leads" tabindex="-1">
-                <i class="fa-solid fa-filter" aria-hidden="true"></i> Leads
-              </button>
-              <button class="tab-btn" role="tab" id="tab-reports" aria-selected="false" aria-controls="workflow-canvas" data-preset="reports" tabindex="-1">
-                <i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Reports
-              </button>
-              <button class="tab-btn" role="tab" id="tab-invoices" aria-selected="false" aria-controls="workflow-canvas" data-preset="invoices" tabindex="-1">
-                <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i> Invoices
-              </button>
-            </div>
-
-            <div class="workflow-canvas" id="workflow-canvas" role="tabpanel" aria-live="polite" tabindex="0">
-              <div class="wf-node node-trigger">
-                <span class="node-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
-                <div class="node-details">
-                  <span class="node-type">Trigger</span>
-                  <p class="node-title" id="trigger-title">New client form submitted</p>
-                </div>
-              </div>
-
-              <div class="wf-connector" aria-hidden="true"><div class="pulse-line"></div></div>
-
-              <div class="wf-node node-agent">
-                <span class="node-icon agent-pulse" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
-                <div class="node-details">
-                  <span class="node-type text-accent">Agentic AI workflow</span>
-                  <p class="node-title" id="agent-title">Extracting, validating and deciding</p>
-                  <p class="agent-thinking">
-                    <span class="typing-text" id="agent-thinking-text">Parsing PDF attachments</span>
-                  </p>
-                </div>
-              </div>
-
-              <div class="wf-connector" aria-hidden="true"><div class="pulse-line"></div></div>
-
-              <div class="wf-node node-outcome">
-                <span class="node-icon" aria-hidden="true"><i class="fa-solid fa-check-double"></i></span>
-                <div class="node-details">
-                  <span class="node-type text-success">Automated outcome</span>
-                  <p class="node-title" id="outcome-title">CRM updated and welcome pack sent</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="simulator-footer">
-              <div class="sim-stat">
-                <span class="sim-label">Manual time before</span>
-                <span class="sim-value text-danger" id="sim-time-before">3 days</span>
-              </div>
-              <span class="sim-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-              <div class="sim-stat">
-                <span class="sim-label">After automation</span>
-                <span class="sim-value text-accent" id="sim-time-after">3 hours</span>
-              </div>
-              <span class="badge-speedup" id="sim-speedup-badge">24x faster</span>
-            </div>
-          </div>
-        </div>
+  <!-- PROBLEMS: navy, the statement wipes in -->
+  <section class="section section--navy" id="problems" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="statement" data-sc-reveal="up" data-sc-reveal-at="0.08 0.34">
+        <h2 class="h2 h2--xl">Most businesses don&rsquo;t need more software. They need the right parts, fitted&nbsp;together.</h2>
       </div>
-    </section>
+      <ul class="pains" data-sc-in data-sc-stagger="70">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10v6H4zM10 14h10v6H10z"/><path d="M14 7h3v4M10 17H7v-4"/></svg>
+          <h3>Copy, paste, repeat</h3>
+          <p>Your team re-types the same order into three systems, every&nbsp;day.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          <h3>A roadmap with no one to build it</h3>
+          <p>The plan is ready. The developers you need are months of hiring&nbsp;away.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
+          <h3>AI tools nobody uses</h3>
+          <p>You bought licences. Nobody is quite sure what they are for&nbsp;yet.</p>
+        </li>
+      </ul>
+      <p class="pains__turn" data-sc-in>We fix exactly this, as one team: the software, the AI, and the IT underneath&nbsp;it.</p>
+    </div>
+  </section>
 
-    <!-- TRUST STRIP -->
-    <section class="trust-strip-section" aria-labelledby="trust-heading">
-      <div class="container">
-        <h2 class="visually-hidden" id="trust-heading">How we work with clients</h2>
-        <ul class="trust-grid">
-          <li class="trust-card glass-panel">
-            <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
-            <div>
-              <p class="trust-value">Under 24 hours</p>
-              <p>Average reply time to a new message</p>
-            </div>
-          </li>
-          <li class="trust-card glass-panel">
-            <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span>
-            <div>
-              <p class="trust-value">Agentic AI only</p>
-              <p>Specialists in autonomous execution</p>
-            </div>
-          </li>
-          <li class="trust-card glass-panel">
-            <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
-            <div>
-              <p class="trust-value">Bengaluru hub</p>
-              <p>Serving mid-market businesses globally</p>
-            </div>
-          </li>
-          <li class="trust-card glass-panel">
-            <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
-            <div>
-              <p class="trust-value">Built to fit</p>
-              <p>Designed around your workflow, not a template</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+  <!-- SERVICES -->
+  <section class="section" id="services" data-sc-act="flow">
+    <div class="sc-wrap">
+      <header class="head">
+        <h2 class="h2">What we build</h2>
+        <p class="head__dek">Six services. Hire us for one, or let one team handle the whole&nbsp;stack.</p>
+      </header>
 
-    <!-- VALUE PROPOSITION -->
-    <section class="value-section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title" id="about-title">
-            We don't just add AI. <br><span class="gradient-text">We automate outcomes.</span>
-          </h2>
-          <p class="section-subtitle">
-            Most IT vendors bolt AI onto an old process and call it innovation. We design agentic systems: AI
-            that doesn't just answer questions but takes action, processing data, triggering workflows, making
-            decisions and finishing the job end to end.
-          </p>
-        </div>
-
-        <div class="comparison-grid">
-          <div class="comparison-card glass-panel">
-            <p class="card-badge badge-traditional">Traditional IT vendors</p>
-            <h3>Generic AI bolt-ons</h3>
-            <ul class="comparison-list">
-              <li><i class="fa-solid fa-xmark icon-danger" aria-hidden="true"></i> Chatbots that rephrase your FAQ page</li>
-              <li><i class="fa-solid fa-xmark icon-danger" aria-hidden="true"></i> Manual handoffs still needed between apps</li>
-              <li><i class="fa-solid fa-xmark icon-danger" aria-hidden="true"></i> Enterprise bloat, enterprise cost, multi-month timelines</li>
-              <li><i class="fa-solid fa-xmark icon-danger" aria-hidden="true"></i> Layers of account managers before any code is written</li>
-            </ul>
+      <div class="cards">
+        <article class="card card--wide" data-sc-in>
+          <div class="card__media"><svg data-illo="software" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>Custom software development</h3>
+            <p>Web apps, mobile apps, SaaS products and internal tools, designed, built, tested and shipped by the same&nbsp;engineers.</p>
+            <ul class="tags"><li>Web &amp; mobile apps</li><li>SaaS</li><li>Internal tools</li><li>APIs</li></ul>
           </div>
+        </article>
+        <article class="card card--wide" data-sc-in>
+          <div class="card__media"><svg data-illo="team" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>Software development outsourcing</h3>
+            <p>A dedicated team that joins your roadmap: your standups, your repository, your definition of done. Scale up for a launch and back down&nbsp;after.</p>
+            <ul class="tags"><li>Dedicated teams</li><li>Staff augmentation</li><li>Project delivery</li></ul>
+          </div>
+        </article>
+        <article class="card" data-sc-in>
+          <div class="card__media"><svg data-illo="automation" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>AI automation &amp; agents</h3>
+            <p>Agents that read the email or document, update the system, draft the reply, and ask a person when something falls outside the&nbsp;rules.</p>
+            <ul class="tags"><li>AI agents</li><li>Workflow automation</li><li>Document processing</li></ul>
+          </div>
+        </article>
+        <article class="card" data-sc-in>
+          <div class="card__media"><svg data-illo="ai" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>AI implementation</h3>
+            <p>Language models connected to your documents, data and tools, chosen for the job and measured against it, with guardrails in&nbsp;place.</p>
+            <ul class="tags"><li>LLM integration</li><li>RAG</li><li>AI assistants</li><li>Evaluation</li></ul>
+          </div>
+        </article>
+        <article class="card" data-sc-in>
+          <div class="card__media"><svg data-illo="data" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>Integrations &amp; data</h3>
+            <p>Your CRM, ERP, accounting and support tools talking to each other, and reporting that updates&nbsp;itself.</p>
+            <ul class="tags"><li>CRM &amp; ERP</li><li>Data pipelines</li><li>Dashboards</li></ul>
+          </div>
+        </article>
+        <article class="card" data-sc-in>
+          <div class="card__media"><svg data-illo="cloud" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
+          <div class="card__body">
+            <h3>Cloud, DevOps &amp; IT support</h3>
+            <p>Cloud setup and migration, deployment pipelines, monitoring, backups, and support when something&nbsp;breaks.</p>
+            <ul class="tags"><li>AWS · Azure · GCP</li><li>CI/CD</li><li>Managed support</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-          <div class="comparison-card glass-panel glow-border">
-            <p class="card-badge badge-ravel">The Ravel way</p>
-            <h3>Autonomous agentic systems</h3>
-            <ul class="comparison-list">
-              <li><i class="fa-solid fa-check icon-accent" aria-hidden="true"></i> Agents that take real operational action</li>
-              <li><i class="fa-solid fa-check icon-accent" aria-hidden="true"></i> API integration across your whole software stack</li>
-              <li><i class="fa-solid fa-check icon-accent" aria-hidden="true"></i> Startup speed with senior-level execution</li>
-              <li><i class="fa-solid fa-check icon-accent" aria-hidden="true"></i> Direct contact with the engineers building it</li>
-            </ul>
+  <!-- AI AUTOMATION: a running example, not a screenshot -->
+  <section class="section section--tint" id="automation" data-sc-act="flow">
+    <div class="sc-wrap">
+      <header class="head head--split">
+        <h2 class="h2">What AI automation looks like</h2>
+        <p class="head__dek">Pick a workflow and watch an agent run it. Every step is logged, and anything unusual goes to a&nbsp;person.</p>
+      </header>
+
+      <div class="demo">
+        <div class="demo__tabs" role="tablist" aria-label="Example workflows">
+          <button role="tab" aria-selected="true" aria-controls="demo-panel" id="tab-onboarding" data-flow="onboarding">Client onboarding</button>
+          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-invoices" data-flow="invoices" tabindex="-1">Invoices</button>
+          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-leads" data-flow="leads" tabindex="-1">Sales leads</button>
+          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-support" data-flow="support" tabindex="-1">Support inbox</button>
+        </div>
+        <div class="demo__panel" id="demo-panel" role="tabpanel" aria-labelledby="tab-onboarding">
+          <div class="demo__col">
+            <p class="demo__label">Trigger</p>
+            <p class="demo__trigger" id="demo-trigger"></p>
+          </div>
+          <div class="demo__col demo__col--agent">
+            <p class="demo__label">Agent steps</p>
+            <ol class="demo__steps" id="demo-steps"></ol>
+          </div>
+          <div class="demo__col">
+            <p class="demo__label">Outcome</p>
+            <p class="demo__outcome" id="demo-outcome"></p>
+            <p class="demo__human" id="demo-human"></p>
           </div>
         </div>
+        <p class="demo__note">Example workflow for illustration. Yours is designed around your own systems and&nbsp;rules.</p>
       </div>
-    </section>
 
-    <!-- SERVICES -->
-    <section class="services-section" id="services" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title" id="services-title">
-            Enterprise AI power. <br><span class="gradient-text">Zero enterprise bloat.</span>
-          </h2>
-          <p class="section-subtitle">Four things we build, each one architected around how your team already works.</p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card glass-panel">
-            <span class="service-icon-box" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
-            <h3 id="svc-1-title">Agentic AI workflows</h3>
-            <p>
-              Custom AI agents that run multi-step business processes, from pulling data out of documents to
-              making the decision at the end, without anyone holding their hand.
-            </p>
-            <ul class="service-tags">
-              <li class="tag">Multi-step AI</li>
-              <li class="tag">Autonomous agents</li>
-              <li class="tag">LLM orchestration</li>
-            </ul>
-            <button class="service-link-btn" data-service="1" aria-describedby="svc-1-title">
-              <span>See what's included</span>
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </button>
-          </article>
-
-          <article class="service-card glass-panel">
-            <span class="service-icon-box" aria-hidden="true"><i class="fa-solid fa-gears"></i></span>
-            <h3 id="svc-2-title">Process automation</h3>
-            <p>
-              We find the repetitive, time-draining tasks across your operations and hand them to intelligent,
-              self-correcting systems built for high volume.
-            </p>
-            <ul class="service-tags">
-              <li class="tag">Workflow audit</li>
-              <li class="tag">Bots &amp; RPA</li>
-              <li class="tag">Self-correcting pipelines</li>
-            </ul>
-            <button class="service-link-btn" data-service="2" aria-describedby="svc-2-title">
-              <span>See what's included</span>
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </button>
-          </article>
-
-          <article class="service-card glass-panel">
-            <span class="service-icon-box" aria-hidden="true"><i class="fa-solid fa-network-wired"></i></span>
-            <h3 id="svc-3-title">AI integration &amp; optimization</h3>
-            <p>
-              Already paying for AI tools? We connect, tune and optimize what you have so it returns something
-              measurable instead of sitting half-used.
-            </p>
-            <ul class="service-tags">
-              <li class="tag">API integration</li>
-              <li class="tag">Fine-tuning</li>
-              <li class="tag">Cost per call</li>
-            </ul>
-            <button class="service-link-btn" data-service="3" aria-describedby="svc-3-title">
-              <span>See what's included</span>
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </button>
-          </article>
-
-          <article class="service-card glass-panel">
-            <span class="service-icon-box" aria-hidden="true"><i class="fa-solid fa-server"></i></span>
-            <h3 id="svc-4-title">Custom IT solutions</h3>
-            <p>
-              Beyond AI, we build and maintain the systems underneath it: web applications, analytics
-              dashboards and the cloud infrastructure your automations run on.
-            </p>
-            <ul class="service-tags">
-              <li class="tag">Web &amp; cloud apps</li>
-              <li class="tag">Dashboards</li>
-              <li class="tag">Infrastructure &amp; support</li>
-            </ul>
-            <button class="service-link-btn" data-service="4" aria-describedby="svc-4-title">
-              <span>See what's included</span>
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ROI CALCULATOR -->
-    <section class="calculator-section" id="calculator" aria-labelledby="calc-title">
-      <div class="container">
-        <div class="calculator-card glass-panel">
-          <div class="calc-header">
-            <span class="section-tag">Interactive estimator</span>
-            <h2 id="calc-title">Estimate your <span class="gradient-text">automation potential</span></h2>
-            <p>Move the sliders to see roughly how much time and cost agentic AI could free up for your team.</p>
-          </div>
-
-          <div class="calc-body">
-            <div class="calc-controls">
-              <div class="slider-group">
-                <div class="slider-label-row">
-                  <label for="team-size-slider">People handling manual tasks</label>
-                  <output class="slider-value" id="team-size-val" for="team-size-slider">15 people</output>
-                </div>
-                <input type="range" id="team-size-slider" min="2" max="100" value="15" step="1" class="custom-range"
-                       aria-valuetext="15 people">
-                <div class="slider-range-labels" aria-hidden="true">
-                  <span>2</span><span>50</span><span>100</span>
-                </div>
-              </div>
-
-              <div class="slider-group">
-                <div class="slider-label-row">
-                  <label for="hours-slider">Manual hours per person each week</label>
-                  <output class="slider-value" id="hours-val" for="hours-slider">12 hrs/week</output>
-                </div>
-                <input type="range" id="hours-slider" min="2" max="30" value="12" step="1" class="custom-range"
-                       aria-valuetext="12 hours per week">
-                <div class="slider-range-labels" aria-hidden="true">
-                  <span>2 hrs</span><span>15 hrs</span><span>30 hrs</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-results-panel" aria-live="polite">
-              <div class="calc-result-box">
-                <span class="calc-result-label">Hours saved every month</span>
-                <span class="calc-result-number gradient-text" id="res-hours-saved">540 hrs</span>
-                <span class="calc-result-sub">Team capacity you get back</span>
-              </div>
-
-              <div class="calc-result-box">
-                <span class="calc-result-label">Estimated annual cost reduction</span>
-                <span class="calc-result-number text-success" id="res-cost-saved">$64,800</span>
-                <span class="calc-result-sub">At a $15/hour blended operational rate</span>
-              </div>
-
-              <div class="calc-result-box">
-                <span class="calc-result-label">Typical speedup per workflow</span>
-                <span class="calc-result-number text-accent" id="res-speedup">10x - 20x</span>
-                <span class="calc-result-sub">Once the workflow runs itself</span>
-              </div>
-
-              <button class="btn btn-gradient btn-full" id="calc-cta-btn">
-                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                <span>Automate these hours</span>
-              </button>
-            </div>
-          </div>
-
-          <p class="calc-disclaimer">
-            An estimate, not a quote. It assumes roughly 75% of the manual hours you enter are automatable.
-            Message us and we'll work through your actual numbers.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY US -->
-    <section class="why-us-section" id="why-us" aria-labelledby="why-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title" id="why-title">
-            Why businesses choose us <br><span class="gradient-text">over the big guys</span>
-          </h2>
-        </div>
-
-        <ul class="bento-grid">
-          <li class="bento-card bento-large glass-panel">
-            <span class="bento-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span>
-            <h3>Small team, zero bureaucracy</h3>
-            <p>
-              No account managers, no layers, no waiting weeks for a decision. You talk to the senior engineers
-              building your solution, every time.
-            </p>
-            <ul class="bento-pill-group">
-              <li class="bento-pill"><i class="fa-solid fa-check" aria-hidden="true"></i> Direct tech lead access</li>
-              <li class="bento-pill"><i class="fa-solid fa-check" aria-hidden="true"></i> No ticket queues</li>
-            </ul>
-          </li>
-
-          <li class="bento-card glass-panel">
-            <span class="bento-icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></span>
-            <h3>Replies under 24 hours</h3>
-            <p>We answer fast because we're built to. No queue, no "someone will get back to you".</p>
-          </li>
-
-          <li class="bento-card glass-panel">
-            <span class="bento-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span>
-            <h3>Focused on agentic AI</h3>
-            <p>This isn't a side offering, it's all we do. Deeper expertise, fewer expensive mistakes.</p>
-          </li>
-
-          <li class="bento-card glass-panel">
-            <span class="bento-icon" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
-            <h3>Built around your business</h3>
-            <p>Every automation is designed around how your team actually works, not a playbook resold to everyone.</p>
-          </li>
-
-          <li class="bento-card glass-panel">
-            <span class="bento-icon" aria-hidden="true"><i class="fa-solid fa-bolt-lightning"></i></span>
-            <h3>Startup agility, enterprise care</h3>
-            <p>
-              Lean means fast. From first call to live deployment we move at startup speed, with the security
-              and precision the work deserves.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="process-section" id="process" aria-labelledby="process-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title" id="process-title">From idea to automation: <span class="gradient-text">simple.</span></h2>
-          <p class="section-subtitle">No multi-month consulting phase. Four steps to something running in production.</p>
-        </div>
-
-        <ol class="process-timeline">
-          <li class="process-step">
-            <div class="step-content glass-panel">
-              <span class="step-icon" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
-              <h3>Chat with us</h3>
-              <p>Message us on WhatsApp with whatever is slowing your team down or eating their hours.</p>
-            </div>
-          </li>
-          <li class="process-step">
-            <div class="step-content glass-panel">
-              <span class="step-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-              <h3>We diagnose</h3>
-              <p>We map the workflow, find the bottlenecks and pinpoint exactly what an agent can take over.</p>
-            </div>
-          </li>
-          <li class="process-step">
-            <div class="step-content glass-panel">
-              <span class="step-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></span>
-              <h3>We build</h3>
-              <p>Our Bengaluru team designs, tests and deploys your agent and the integrations around it.</p>
-            </div>
-          </li>
-          <li class="process-step">
-            <div class="step-content glass-panel">
-              <span class="step-icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
-              <h3>You scale</h3>
-              <p>The process runs itself. We stay on for monitoring, support and the next round of optimization.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- SAMPLE OUTCOME -->
-    <section class="proof-section" aria-labelledby="outcome-title">
-      <div class="container">
-        <div class="outcome-card glass-panel center">
-        <p class="outcome-label">Sample engagement</p>
-        <h2 class="outcome-text" id="outcome-heading">
-          Client onboarding that took three days of manual data entry now finishes in three hours.
-        </h2>
-        <dl class="outcome-meter">
-          <div class="outcome-figure">
-            <dt>Before</dt>
-            <dd class="text-danger">3 days</dd>
-          </div>
-          <span class="outcome-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-          <div class="outcome-figure">
-            <dt>After</dt>
-            <dd class="text-success">3 hours</dd>
-          </div>
+      <div class="depts">
+        <h3 class="h3">Work we can automate, by team</h3>
+        <dl class="depts__grid">
+          <div><dt>Finance</dt><dd>Invoice capture and matching, payment reminders, expense checks, month-end reports.</dd></div>
+          <div><dt>Sales</dt><dd>Lead qualification, CRM updates, follow-up drafts, proposal generation.</dd></div>
+          <div><dt>Operations</dt><dd>Order entry, inventory updates, supplier emails, scheduling.</dd></div>
+          <div><dt>HR</dt><dd>Candidate screening, onboarding paperwork, policy questions, leave tracking.</dd></div>
+          <div><dt>Customer support</dt><dd>Ticket triage, answers from your knowledge base, escalation with full context.</dd></div>
+          <div><dt>Management</dt><dd>Weekly reports from live data, document search across the company, meeting summaries.</dd></div>
         </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD YOUR BRIEF: the signature move -->
+  <section class="section" id="brief" data-sc-act="flow">
+    <div class="sc-wrap builder">
+      <div class="builder__plate">
+        <figure class="plate--builder">
+          <svg id="builder-svg" viewBox="-300 -420 600 560" role="img" aria-labelledby="builder-cap"></svg>
+          <figcaption class="builder__cap" id="builder-cap">Your project so far: nothing yet.</figcaption>
+        </figure>
+        <div class="running" aria-live="polite">
+          <p class="running__label">Your brief</p>
+          <p class="running__text" id="running-text">Choose what you need and your brief will write itself here.</p>
         </div>
       </div>
-    </section>
 
-    <!-- FINAL CTA -->
-    <section class="final-cta-section" id="contact" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta-box glass-panel glow-box center">
-          <h2 class="cta-headline" id="cta-title">Let's automate something today.</h2>
-          <p class="cta-subtext">
-            No lengthy sales calls. No proposal sitting in your inbox for weeks. Just message us, and you'll
-            usually hear back the same day.
-          </p>
+      <form class="builder__choices" id="builder" aria-labelledby="brief-h">
+        <header class="head">
+          <p class="eyebrow">Two minutes, no sign-up</p>
+          <h2 class="h2" id="brief-h">Build your project brief</h2>
+          <p class="head__dek">Pick the parts you need. We&rsquo;ll stack the blocks and write the brief for&nbsp;you.</p>
+        </header>
 
-          <div class="cta-buttons">
-            <button class="btn btn-xl btn-gradient" id="final-wa-btn">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-              <span>Message us on WhatsApp</span>
-            </button>
+        <fieldset class="choice">
+          <legend>What do you need?</legend>
+          <div class="choice__grid">
+            <label class="chip"><input type="checkbox" name="b-mod" value="software"><span>Custom software</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="team"><span>A dedicated team</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="automation"><span>AI automation</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="ai"><span>AI implementation</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="data"><span>Integrations &amp; data</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="cloud"><span>Cloud &amp; DevOps</span></label>
+            <label class="chip"><input type="checkbox" name="b-mod" value="support"><span>IT support</span></label>
           </div>
+        </fieldset>
 
-          <div class="cta-footer-note">
-            <ul class="meta-row">
-              <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Bengaluru based</li>
-              <li><i class="fa-solid fa-earth-asia" aria-hidden="true"></i> Global delivery</li>
-              <li><i class="fa-solid fa-bolt" aria-hidden="true"></i> Reply under 24 hours</li>
-            </ul>
+        <fieldset class="choice">
+          <legend>Where are you starting from?</legend>
+          <div class="choice__grid">
+            <label class="chip"><input type="radio" name="b-start" value="idea"><span>An idea to build</span></label>
+            <label class="chip"><input type="radio" name="b-start" value="process"><span>A manual process</span></label>
+            <label class="chip"><input type="radio" name="b-start" value="existing"><span>An existing system</span></label>
+            <label class="chip"><input type="radio" name="b-start" value="capacity"><span>Not enough engineers</span></label>
           </div>
+        </fieldset>
+
+        <fieldset class="choice">
+          <legend>When?</legend>
+          <div class="choice__grid">
+            <label class="chip"><input type="radio" name="b-when" value="now"><span>As soon as possible</span></label>
+            <label class="chip"><input type="radio" name="b-when" value="quarter"><span>Within three months</span></label>
+            <label class="chip"><input type="radio" name="b-when" value="exploring"><span>Just exploring</span></label>
+          </div>
+        </fieldset>
+
+        <div class="builder__go">
+          <a class="btn btn--lg" href="#start" id="builder-go">Start a project</a>
+          <p class="builder__note">Your choices go straight into the form. You can edit everything before sending.</p>
         </div>
-      </div>
-    </section>
-  </main>
+      </form>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-col brand-col">
-        <a href="#hero" class="brand-logo">
-          <img src="logo-mark.png" alt="" width="34" height="34" class="logo-img" aria-hidden="true">
-          <span class="brand-name">RAVEL <span class="brand-sub">SOFTWORKS</span></span>
-        </a>
-        <p class="footer-tagline">IT solutions and agentic AI automation</p>
-        <p class="footer-location">
-          <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Bengaluru, India
-        </p>
+  <!-- PROCESS: lateral travel through the stages -->
+  <section class="section--navy process" id="process" data-sc-act="pan" data-sc-span="2.4">
+    <div data-sc-stage class="process__stage">
+      <div class="rail" data-sc-pan="0.04">
+        <div class="rail__lead">
+          <h2 class="h2">How an engagement runs</h2>
+          <p class="head__dek">Four stages. Each one ends with something you can keep, even if you stop&nbsp;there.</p>
+        </div>
+        <article class="stage">
+          <p class="stage__n">01</p>
+          <h3 class="stage__h">Talk</h3>
+          <p>You tell us what is slowing you down. We ask the awkward questions, and tell you honestly whether we are the right&nbsp;fit.</p>
+          <p class="stage__keep"><span>You get</span> A straight answer within one business&nbsp;day.</p>
+        </article>
+        <article class="stage">
+          <p class="stage__n">02</p>
+          <h3 class="stage__h">Scope</h3>
+          <p>We map the workflow or product and write it down: what we will build, in what order, and what it will&nbsp;cost.</p>
+          <p class="stage__keep"><span>You get</span> A written scope and&nbsp;estimate.</p>
+        </article>
+        <article class="stage">
+          <p class="stage__n">03</p>
+          <h3 class="stage__h">Build</h3>
+          <p>Work ships in short cycles. At every review you see working software, not a status&nbsp;report.</p>
+          <p class="stage__keep"><span>You get</span> Working increments and access to the&nbsp;code.</p>
+        </article>
+        <article class="stage">
+          <p class="stage__n">04</p>
+          <h3 class="stage__h">Run</h3>
+          <p>We launch, monitor and keep improving it. Or we hand over to your team, cleanly, with documentation.</p>
+          <p class="stage__keep"><span>You get</span> Support, or a clean&nbsp;handover.</p>
+        </article>
+        <p class="rail__end">No lock-in at any&nbsp;stage.</p>
       </div>
+    </div>
+  </section>
 
-      <nav class="footer-col" aria-labelledby="footer-nav-title">
-        <h2 id="footer-nav-title">Quick links</h2>
-        <ul class="footer-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why-us">Why us</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#calculator">ROI estimator</a></li>
-          <li><a href="#contact">Contact</a></li>
+  <!-- WHY US -->
+  <section class="section" id="why" data-sc-act="flow">
+    <div class="sc-wrap why">
+      <figure class="why__media" data-sc-reveal="left" data-sc-reveal-at="0.12 0.42">
+        <svg id="why-svg" viewBox="-300 -330 620 520" role="img" aria-label="A line drawing of the Ravel R with dimension lines."></svg>
+      </figure>
+      <div class="why__copy">
+        <h2 class="h2">We&rsquo;re new. That works in your&nbsp;favour.</h2>
+        <ul class="why__list" data-sc-in data-sc-stagger="70">
+          <li><b>The founders build it.</b> You would be one of our first clients, so the people who started the company write your code, and our reputation rides on how your project&nbsp;goes.</li>
+          <li><b>You talk to the engineers.</b> No account managers, no ticket queue, no &ldquo;someone will get back to&nbsp;you.&rdquo;</li>
+          <li><b>One team for the whole stack.</b> Software, AI and IT in one place means nobody blames the other&nbsp;vendor.</li>
+          <li><b>You own everything.</b> Code, data, accounts and documentation live in your repositories and cloud accounts.</li>
         </ul>
-      </nav>
+        <h3 class="h3">Three ways to work with us</h3>
+        <dl class="models">
+          <div><dt>Project</dt><dd>A fixed scope, a fixed price, a delivery date.</dd></div>
+          <div><dt>Dedicated team</dt><dd>Engineers on your roadmap, billed monthly.</dd></div>
+          <div><dt>Support</dt><dd>Maintenance and improvements on a monthly plan.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-      <nav class="footer-col" aria-labelledby="footer-offerings-title">
-        <h2 id="footer-offerings-title">What we build</h2>
-        <ul class="footer-links">
-          <li><a href="#services">Agentic AI workflows</a></li>
-          <li><a href="#services">Process automation</a></li>
-          <li><a href="#services">AI integration</a></li>
-          <li><a href="#services">Custom IT infrastructure</a></li>
+  <!-- TOOLS -->
+  <section class="tools" aria-labelledby="tools-h">
+    <div class="sc-wrap tools__inner">
+      <h2 class="tools__h" id="tools-h">Tools we build with</h2>
+      <!-- TODO(confirm): keep only tools the team genuinely uses -->
+      <ul class="tools__list">
+        <li>Python</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Node.js</li><li>Flutter</li><li>PostgreSQL</li><li>OpenAI</li><li>Anthropic</li><li>Google Gemini</li><li>LangGraph</li><li>n8n</li><li>AWS</li><li>Azure</li><li>Google Cloud</li><li>Docker</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" data-sc-act="flow">
+    <div class="sc-wrap faq">
+      <header class="head">
+        <h2 class="h2">Questions buyers ask</h2>
+        <p class="head__dek">Anything else, ask us directly. We reply within one business&nbsp;day.</p>
+      </header>
+      <div class="faq__list">
+        <details><summary>Do you work with companies outside India?</summary><p>Yes. We are based in Bengaluru and work with companies in India, the US, the UK and Europe, with working hours that overlap yours for calls and reviews.</p></details>
+        <details><summary>How do you price a project?</summary><p>Well-defined projects get a fixed price. Dedicated teams and ongoing support are billed monthly. Either way, you receive a written scope and estimate before any work starts.</p></details>
+        <details><summary>What does AI automation mean in practice?</summary><p>Software agents that do a defined piece of work end to end: reading documents and emails, updating your systems, drafting replies or reports, and asking a person when something falls outside the rules you set.</p></details>
+        <details><summary>Is our data safe if we use AI?</summary><p>We design around your data policies: business-tier model APIs that do not train on your data, private deployments where needed, access limited to what each workflow requires, and logs of every action an agent takes.</p></details>
+        <details><summary>Can you work with our existing systems?</summary><p>Yes. Most of our work connects to software you already use, such as your CRM, ERP, accounting tools, databases and cloud accounts, rather than replacing it.</p></details>
+        <details><summary>Who owns the code?</summary><p>You do. Source code, accounts, data and documentation belong to you, and live in your repositories and cloud accounts wherever possible.</p></details>
+        <details><summary>Will you sign an NDA?</summary><p>Yes, before you share anything sensitive.</p></details>
+        <details><summary>What happens after launch?</summary><p>You choose. We can stay on for monitoring, support and improvements, or hand over to your team with documentation and a walkthrough.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- START A PROJECT: the close -->
+  <section class="section section--navy contact" id="start" data-sc-act="flow">
+    <div class="sc-wrap contact__grid">
+      <div class="contact__intro">
+        <h2 class="h2 h2--xl">Start a project.</h2>
+        <p class="head__dek">Tell us what&rsquo;s slowing you down. We reply within one business&nbsp;day, with a straight answer on whether we can&nbsp;help.</p>
+        <ul class="contact__ways">
+          
+          <li><span>Email</span><a href="mailto:contact@ravelsoftworks.com">contact@ravelsoftworks.com</a></li>
+          <li class="js-wa-row" hidden><span>WhatsApp</span><a class="js-wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+          <li><span>Office</span>Bengaluru, Karnataka, India</li>
         </ul>
-      </nav>
-
-      <div class="footer-col contact-col">
-        <h2>Talk to us</h2>
-        <p>Ready to get those operational hours back?</p>
-        <button class="btn btn-outline" id="footer-wa-btn">
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-          <span>Chat on WhatsApp</span>
-        </button>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <div class="container footer-bottom-container">
-        <p>&copy; <span id="footer-year">2026</span> Ravel Softworks. All rights reserved.</p>
-        <p class="footer-status">
-          <span class="live-dot" aria-hidden="true"></span> Systems operational
+      <form class="brief-form" id="brief-form" name="project-brief" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="project-brief">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="field-row">
+          <p class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></p>
+          <p class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></p>
+        </div>
+        <div class="field-row">
+          <p class="field"><label for="f-company">Company or organisation</label><input id="f-company" name="company" autocomplete="organization"></p>
+          <p class="field"><label for="f-country">Country</label><input id="f-country" name="country" autocomplete="country-name"></p>
+        </div>
+
+        <fieldset class="field field--set">
+          <legend>What do you need?</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="services" value="Custom software"> Custom software</label>
+            <label><input type="checkbox" name="services" value="Dedicated team"> A dedicated team</label>
+            <label><input type="checkbox" name="services" value="AI automation"> AI automation</label>
+            <label><input type="checkbox" name="services" value="AI implementation"> AI implementation</label>
+            <label><input type="checkbox" name="services" value="Integrations and data"> Integrations &amp; data</label>
+            <label><input type="checkbox" name="services" value="Cloud and DevOps"> Cloud &amp; DevOps</label>
+            <label><input type="checkbox" name="services" value="IT support"> IT support</label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <p class="field"><label for="f-start">Starting from</label>
+            <select id="f-start" name="starting-point">
+              <option value="">Choose one</option>
+              <option>An idea to build</option>
+              <option>A manual process</option>
+              <option>An existing system</option>
+              <option>Not enough engineers</option>
+            </select></p>
+          <p class="field"><label for="f-when">Timing</label>
+            <select id="f-when" name="timing">
+              <option value="">Choose one</option>
+              <option>As soon as possible</option>
+              <option>Within three months</option>
+              <option>Just exploring</option>
+            </select></p>
+        </div>
+
+        <p class="field"><label for="f-message">Your brief</label><textarea id="f-message" name="message" rows="5" required placeholder="What should it do, who uses it, and what happens today instead?"></textarea></p>
+
+        <p class="brief-form__send">
+          <button class="btn btn--lg btn--accent" type="submit">Start a project</button>
+          <output class="brief-form__status" id="form-status"></output>
         </p>
-      </div>
+      </form>
     </div>
-  </footer>
+  </section>
 
-  <!-- WHATSAPP MODAL -->
-  <div class="modal-overlay" id="wa-modal" role="dialog" aria-modal="true" aria-labelledby="wa-modal-title" hidden>
-    <div class="modal-content glass-panel" id="wa-modal-panel" tabindex="-1">
-      <div class="mac-window-header">
-        <div class="window-controls">
-          <button type="button" class="control close modal-ctrl-close" aria-label="Close"></button>
-          <button type="button" class="control minimize modal-ctrl-minimize" aria-label="Minimize"></button>
-          <button type="button" class="control expand modal-ctrl-expand" aria-label="Toggle full screen"></button>
-        </div>
-        <p class="window-title">
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span>WhatsApp</span>
-        </p>
-      </div>
+</main>
 
-      <div class="mac-card-content">
-        <div class="modal-header">
-          <span class="wa-modal-avatar" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
-          <div>
-            <h2 id="wa-modal-title">Start a WhatsApp chat</h2>
-            <p class="text-sub">Ravel Softworks, Bengaluru</p>
-          </div>
-        </div>
-
-        <div class="modal-body">
-          <p class="field-label" id="wa-goal-label">What would you like to automate?</p>
-          <div class="wa-options-grid" role="group" aria-labelledby="wa-goal-label">
-            <button type="button" class="wa-opt-btn" aria-pressed="true" data-goal="agentic AI workflows">
-              <i class="fa-solid fa-robot" aria-hidden="true"></i> Agentic AI workflows
-            </button>
-            <button type="button" class="wa-opt-btn" aria-pressed="false" data-goal="process automation">
-              <i class="fa-solid fa-gears" aria-hidden="true"></i> Process automation
-            </button>
-            <button type="button" class="wa-opt-btn" aria-pressed="false" data-goal="AI integration">
-              <i class="fa-solid fa-sliders" aria-hidden="true"></i> AI integration
-            </button>
-            <button type="button" class="wa-opt-btn" aria-pressed="false" data-goal="a custom IT build">
-              <i class="fa-solid fa-code" aria-hidden="true"></i> Custom IT solution
-            </button>
-          </div>
-
-          <label class="field-label" for="wa-custom-msg">Add a note (optional)</label>
-          <textarea id="wa-custom-msg" rows="3" placeholder="Hi Ravel team, I want to automate our daily data workflow..."></textarea>
-
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-gradient btn-full btn-lg" id="send-wa-direct">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <span>Open WhatsApp</span>
-          </a>
-        </div>
-      </div>
+<footer class="footer">
+  <div class="sc-wrap footer__grid">
+    <div class="footer__brand">
+      <p class="nav__brand"><img src="logo-mark.png" alt="" width="30" height="30"><span>Ravel <b>Softworks</b></span></p>
+      <p>Software development, AI automation and IT services. Bengaluru, India.</p>
+    </div>
+    <nav aria-label="Services">
+      <h2>Services</h2>
+      <ul><li><a href="#services">Custom software</a></li><li><a href="#services">Development outsourcing</a></li><li><a href="#automation">AI automation</a></li><li><a href="#services">AI implementation</a></li><li><a href="#services">Cloud &amp; IT support</a></li></ul>
+    </nav>
+    <nav aria-label="Company">
+      <h2>Company</h2>
+      <ul><li><a href="#process">How we work</a></li><li><a href="#why">Why us</a></li><li><a href="#faq">FAQ</a></li><li><a href="#start">Start a project</a></li></ul>
+    </nav>
+    <div>
+      <h2>Contact</h2>
+      <ul><li><a href="mailto:contact@ravelsoftworks.com">contact@ravelsoftworks.com</a></li><li class="js-wa-row" hidden><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a></li><li>Bengaluru, Karnataka, India</li></ul>
     </div>
   </div>
+  <p class="sc-wrap footer__small">&copy; 2026 Ravel Softworks. All rights reserved.</p>
+</footer>
 
-  <!-- SERVICE DETAIL MODAL -->
-  <div class="modal-overlay" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="svc-modal-title" hidden>
-    <div class="modal-content glass-panel" id="service-modal-panel" tabindex="-1">
-      <div class="mac-window-header">
-        <div class="window-controls">
-          <button type="button" class="control close modal-ctrl-close" aria-label="Close"></button>
-          <button type="button" class="control minimize modal-ctrl-minimize" aria-label="Minimize"></button>
-          <button type="button" class="control expand modal-ctrl-expand" aria-label="Toggle full screen"></button>
-        </div>
-        <p class="window-title"><span>Service details</span></p>
-      </div>
-
-      <div class="mac-card-content">
-        <div class="modal-header">
-          <span class="service-modal-icon" id="svc-modal-icon" aria-hidden="true">
-            <i class="fa-solid fa-microchip"></i>
-          </span>
-          <div>
-            <h2 id="svc-modal-title">Service</h2>
-            <span class="badge-pill" id="svc-modal-tag"></span>
-          </div>
-        </div>
-        <div class="modal-body">
-          <p id="svc-modal-desc" class="svc-modal-description"></p>
-
-          <h3>What's included</h3>
-          <ul class="svc-modal-list" id="svc-modal-features"></ul>
-
-          <button class="btn btn-gradient btn-full" id="svc-modal-cta">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <span>Discuss this on WhatsApp</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOAST -->
-  <div class="mac-toast-container" id="mac-toast" role="status" aria-live="polite">
-    <span class="mac-toast-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
-    <div class="mac-toast-content">
-      <p class="mac-toast-title">Ravel Softworks</p>
-      <p class="mac-toast-msg" id="mac-toast-msg"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<script src="assets/scrollcraft.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

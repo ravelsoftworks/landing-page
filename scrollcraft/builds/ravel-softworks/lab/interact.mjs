@@ -1,0 +1,52 @@
+import { chromium } from 'playwright-core';
+const out = new URL('.', import.meta.url).pathname;
+const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const errors = [];
+for (const [name, vp] of [['desk', { width: 1440, height: 900 }], ['phone', { width: 390, height: 844 }], ['small', { width: 360, height: 640 }]]) {
+  const ctx = await b.newContext({ viewport: vp, deviceScaleFactor: 1, isMobile: name !== 'desk', hasTouch: name !== 'desk' });
+  await ctx.addInitScript(() => { Element.prototype.requestPointerLock = () => {}; Element.prototype.setPointerCapture = () => {}; });
+  const p = await ctx.newPage();
+  p.on('console', m => m.type() === 'error' && errors.push(name + ': ' + m.text()));
+  p.on('pageerror', e => errors.push(name + ': ' + e.message));
+  p.on('requestfailed', r => errors.push(name + ' failed: ' + r.url()));
+  await p.goto('http://localhost:4500/', { waitUntil: 'networkidle' });
+  await p.screenshot({ path: `${out}i-${name}-0hero.png` });
+  const ow = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  console.log(name, 'horizontal overflow', ow);
+  await p.evaluate(() => scrollTo(0, innerHeight * 0.75)); await p.waitForTimeout(400);
+  await p.screenshot({ path: `${out}i-${name}-1hero-mid.png` });
+  await p.evaluate(() => document.querySelector('#problems').scrollIntoView()); await p.waitForTimeout(900);
+  await p.screenshot({ path: `${out}i-${name}-2hurts.png` });
+  await p.evaluate(() => document.querySelector('#builder').scrollIntoView()); await p.waitForTimeout(500);
+  for (const v of ['software', 'automation', 'data', 'cloud']) await p.click(`label.chip:has(input[value="${v}"])`);
+  await p.click('label.chip:has(input[value="process"])');
+  await p.click('label.chip:has(input[value="now"])');
+  await p.waitForTimeout(900);
+  await p.evaluate(() => document.querySelector('#builder .choice:nth-of-type(2)').scrollIntoView({ block: 'center' })); await p.waitForTimeout(300);
+  await p.screenshot({ path: `${out}i-${name}-3builder.png` });
+  await p.click('label.chip:has(input[value="automation"])'); await p.waitForTimeout(900);
+  await p.screenshot({ path: `${out}i-${name}-4builder-removed.png` });
+  await p.click('#builder-go'); await p.waitForTimeout(1500);
+  const f = await p.evaluate(() => ({ msg: document.querySelector('#f-message').value, svc: [...document.querySelectorAll('input[name=services]:checked')].map(i => i.value), start: document.querySelector('#f-start').value, when: document.querySelector('#f-when').value, focus: document.activeElement.id }));
+  console.log(name, JSON.stringify(f));
+  await p.screenshot({ path: `${out}i-${name}-5form.png` });
+  await p.fill('#f-name', 'Test'); await p.fill('#f-email', 'test@example.com');
+  await p.click('#brief-form button[type=submit]'); await p.waitForTimeout(800);
+  console.log(name, 'status:', await p.textContent('#form-status'));
+  if (name !== 'desk') {
+    await p.click('.nav__burger'); await p.waitForTimeout(250);
+    await p.screenshot({ path: `${out}i-${name}-6menu.png` });
+    await p.click('#nav-links a[href="#faq"]'); await p.waitForTimeout(900);
+    console.log(name, 'menu closed after link', await p.evaluate(() => !document.getElementById('nav-links').classList.contains('is-open')));
+  }
+  await p.evaluate(() => document.querySelector('#automation').scrollIntoView()); await p.waitForTimeout(500);
+  await p.click('#tab-invoices'); await p.waitForTimeout(4600);
+  await p.evaluate(() => document.querySelector('.demo').scrollIntoView({block:'center'})); await p.waitForTimeout(200);
+  await p.screenshot({ path: `${out}i-${name}-7demo.png` });
+  console.log(name, 'demo done steps', await p.evaluate(() => document.querySelectorAll('#demo-steps li.is-done').length));
+  await p.evaluate(() => document.querySelector('#services').scrollIntoView()); await p.waitForTimeout(900);
+  await p.screenshot({ path: `${out}i-${name}-8services.png` });
+  await ctx.close();
+}
+console.log('errors', errors);
+await b.close();

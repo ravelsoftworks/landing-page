@@ -1,0 +1,15 @@
+# Static site: no build step, publish the repo root.
+[build]
+  publish = "."
+
+# Build notes and screenshots live in /scrollcraft; keep them off the public site.
+[[redirects]]
+  from = "/scrollcraft/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

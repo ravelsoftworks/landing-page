@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /scrollcraft/
+
+Sitemap: https://www.ravelsoftworks.com/sitemap.xml

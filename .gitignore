@@ -15,3 +15,10 @@ yarn-error.log
 # Build output
 dist/
 build/
+
+# scrollcraft build lab (screenshots, tooling)
+scrollcraft/builds/*/lab/*.png
+scrollcraft/builds/*/lab/*/
+scrollcraft/builds/*/package*.json
+serve.log
+scrollcraft/builds/*/originals/
