@@ -537,27 +537,6 @@
     return true;
   }
 
-  /* ------------------------------------------------------- chapter V plate -- */
-  function whyPlate() {
-    var svg = document.getElementById('why-svg');
-    if (!svg) return;
-    var P = placer(20, -70, 0.7);
-    drawMark(el('g', { transform: P.t }, svg), { line: true, sw: 1.6 });
-    // dimension lines, drawn like an engineering plate
-    function dim(A, B, o, label, anchor) {
-      var g = el('g', { stroke: INK, 'stroke-width': 0.8, fill: 'none' }, svg);
-      el('line', lineAttrs([A[0] + o[0], A[1] + o[1]], [B[0] + o[0], B[1] + o[1]], {}), g);
-      el('line', lineAttrs(A, [A[0] + o[0] * 1.15, A[1] + o[1] * 1.15], { 'stroke-dasharray': '2 3' }), g);
-      el('line', lineAttrs(B, [B[0] + o[0] * 1.15, B[1] + o[1] * 1.15], { 'stroke-dasharray': '2 3' }), g);
-      [A, B].forEach(function (Q) { el('circle', { cx: Q[0] + o[0], cy: Q[1] + o[1], r: 2.2, fill: INK, stroke: 'none' }, g); });
-      var tx = (A[0] + B[0]) / 2 + o[0] * 1.4, ty = (A[1] + B[1]) / 2 + o[1] * 1.4;
-      var t = el('text', { x: tx.toFixed(1), y: ty.toFixed(1), 'text-anchor': anchor, 'font-size': 12, fill: '#0A6E65', stroke: 'none' }, svg);
-      t.textContent = label;
-    }
-    dim(P.at(412, 264), P.at(412, 746), [-34, 0], 'your roadmap', 'end');
-    dim(P.at(594, 706), P.at(808, 835), [-16, 28], 'one team', 'middle');
-  }
-
   /* -------------------------------------------------------- the builder -- */
   var MODS = [
     { k: 'software',   label: 'Custom software',   pal: PAL.teal,   form: 'Custom software',       phrase: 'custom software' },
@@ -745,78 +724,6 @@
     var href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hi Ravel Softworks, I would like to talk about a project.');
     document.querySelectorAll('.js-wa').forEach(function (a) { a.href = href; a.hidden = false; });
     document.querySelectorAll('.js-wa-row').forEach(function (r) { r.hidden = false; });
-  }
-
-  /* ------------------------------------------------ service illustrations -- */
-  var ILLOS = {
-    software: { c: [2, 1.5, 1.2], boxes: [
-      [0.6, 0.4, 0, 4, 3, 0.3, PAL.paper], [0.3, 0.2, 1.1, 4, 3, 0.3, PAL.blue], [0, 0, 2.2, 4, 3, 0.3, PAL.teal] ] },
-    team: { c: [3, 1, 0.6], boxes: [
-      [-0.4, -0.4, -0.3, 6.8, 2.8, 0.3, PAL.plinth],
-      [0, 0.5, 0, 1, 1, 1.4, PAL.teal], [1.6, 0.5, 0, 1, 1, 1.4, PAL.blue], [3.2, 0.5, 0, 1, 1, 1.4, PAL.indigo], [4.8, 0.5, 0, 1, 1, 1.4, PAL.paper] ] },
-    automation: { c: [3.5, 0.7, 0.8], boxes: [
-      [0, 0, 0, 7, 1.4, 0.3, PAL.navy],
-      [2.6, 0, 0.3, 0.4, 1.4, 1.8, PAL.indigo],
-      [0.6, 0.3, 0.3, 0.8, 0.8, 0.8, PAL.paper], [5.2, 0.3, 0.3, 0.8, 0.8, 0.8, PAL.teal],
-      [4, 0, 0.3, 0.4, 1.4, 1.8, PAL.indigo], [2.6, 0, 2.1, 1.8, 1.4, 0.4, PAL.indigo] ] },
-    ai: { c: [2, 2, 0.8], boxes: [
-      [-0.3, -0.3, -0.3, 4.6, 4.6, 0.3, PAL.plinth],
-      [0, 0, 0, 0.7, 0.7, 0.7, PAL.teal], [1.65, 0, 0, 0.7, 0.7, 0.7, PAL.teal], [3.3, 0, 0, 0.7, 0.7, 0.7, PAL.teal],
-      [0, 1.65, 0, 0.7, 0.7, 0.7, PAL.teal], [1.2, 1.2, 0, 1.6, 1.6, 1.6, PAL.blue], [3.3, 1.65, 0, 0.7, 0.7, 0.7, PAL.teal],
-      [0, 3.3, 0, 0.7, 0.7, 0.7, PAL.teal], [1.65, 3.3, 0, 0.7, 0.7, 0.7, PAL.teal], [3.3, 3.3, 0, 0.7, 0.7, 0.7, PAL.teal] ] },
-    data: { c: [2.5, 0.6, 1.5], boxes: [
-      [0, 0, 0, 1.2, 1.2, 3, PAL.teal], [1.2, 0.4, 1.9, 2.6, 0.4, 0.4, PAL.paper], [3.8, 0, 0, 1.2, 1.2, 2.3, PAL.indigo] ] },
-    cloud: { c: [2.5, 1.5, 1], boxes: [
-      [0, 0, 0, 5, 3, 0.3, PAL.paper],
-      [0.4, 0.7, 0.3, 1, 1.6, 2.2, PAL.navy], [2, 0.7, 0.3, 1, 1.6, 2.2, PAL.navy], [3.6, 0.7, 0.3, 1, 1.6, 2.2, PAL.navy],
-      [0.4, 0.7, 2.5, 1, 1.6, 0.12, PAL.sky], [2, 0.7, 2.5, 1, 1.6, 0.12, PAL.sky], [3.6, 0.7, 2.5, 1, 1.6, 0.12, PAL.sky] ] }
-  };
-  function illos() {
-    document.querySelectorAll('svg[data-illo]').forEach(function (svg) {
-      var d = ILLOS[svg.getAttribute('data-illo')];
-      if (!d) return;
-      var u = 26;
-      var g = el('g', {}, svg);
-      var c = iso(d.c[0], d.c[1], d.c[2], u);
-      g.setAttribute('transform', 'translate(' + (-c[0]).toFixed(1) + ',' + (-c[1]).toFixed(1) + ')');
-      el('polygon', { points: pts([[-1, -1, -0.35], [d.c[0] * 2 + 1, -1, -0.35], [d.c[0] * 2 + 1, d.c[1] * 2 + 1, -0.35], [-1, d.c[1] * 2 + 1, -0.35]], u), fill: 'rgba(12,27,54,0.05)' }, g);
-      d.boxes.forEach(function (b) { box(g, b[0], b[1], b[2], b[3], b[4], b[5], u, b[6]); });
-    });
-  }
-
-  /* ------------------------------------------------------------ photos -- */
-  // Drop photos into assets/img/ named after the slot (software.jpg, team.jpg ...).
-  // A slot with a photo shows it; a slot without one keeps its drawing.
-  var PHOTO_ALT = {
-    software: 'A developer\u2019s desk with a laptop and wireframe sketches',
-    team: 'Engineers planning work at a whiteboard',
-    automation: 'An operations desk with invoices being processed',
-    ai: 'A workstation at dusk with an abstract AI graph on screen',
-    data: 'Printed charts and reports on a desk',
-    cloud: 'A server rack in a clean, bright room',
-    why: 'A calm workspace in Bengaluru at golden hour'
-  };
-  function photos() {
-    var slots = Array.prototype.slice.call(document.querySelectorAll('svg[data-illo]'))
-      .map(function (svg) { return { name: svg.getAttribute('data-illo'), svg: svg }; });
-    var why = document.getElementById('why-svg');
-    if (why) slots.push({ name: 'why', svg: why });
-    slots.forEach(function (slot) {
-      var exts = ['jpg', 'png', 'webp'];
-      (function attempt(i) {
-        if (i >= exts.length) return;
-        var img = new Image();
-        img.onload = function () {
-          img.className = 'photo';
-          img.alt = PHOTO_ALT[slot.name] || '';
-          img.decoding = 'async';
-          slot.svg.parentNode.classList.add('has-photo');
-          slot.svg.replaceWith(img);
-        };
-        img.onerror = function () { attempt(i + 1); };
-        img.src = 'assets/img/' + slot.name + '.' + exts[i];
-      })(0);
-    });
   }
 
   /* --------------------------------------------------- automation demo -- */
@@ -1066,6 +973,61 @@
     requestAnimationFrame(frame);
   }
 
+  /* --------------------------------------------------------- analytics --
+     Google Analytics 4, loaded only after the visitor accepts (UK/EU consent
+     rules). Until a measurement ID is set here nothing loads and no banner shows. */
+  // GA4 measurement ID (Google's own snippet is not pasted in: it would load before consent)
+  var GA_ID = 'G-DLK9LW97V6';
+  var CONSENT_KEY = 'ravel_consent';
+  function track(name, params) {
+    if (window.gtag) window.gtag('event', name, params || {});
+  }
+  function loadGA() {
+    if (!GA_ID || window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+    var sc = document.createElement('script');
+    sc.async = true;
+    sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(sc);
+  }
+  function consent() {
+    if (!GA_ID) return;
+    var box = document.getElementById('consent');
+    var settings = document.querySelector('.js-cookie-settings');
+    var saved = null;
+    try { saved = localStorage.getItem(CONSENT_KEY); } catch (e) { /* storage blocked: ask each visit */ }
+    if (saved === 'granted') loadGA();
+    if (!saved && box) box.hidden = false;
+    if (settings) {
+      settings.hidden = false;
+      settings.addEventListener('click', function () { if (box) box.hidden = false; });
+    }
+    if (box) box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-consent]');
+      if (!b) return;
+      var choice = b.getAttribute('data-consent');
+      try { localStorage.setItem(CONSENT_KEY, choice); } catch (err) { /* ignore */ }
+      box.hidden = true;
+      if (choice === 'granted') loadGA();
+      else if (saved === 'granted') location.reload();   // withdrawing consent: drop the already-loaded tag
+    });
+  }
+  // The actions that matter for winning clients
+  function tracking() {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a, button');
+      if (!a) return;
+      if (a.id === 'builder-go') track('build_brief', {});
+      else if (a.getAttribute('href') === '#start') track('start_project_click', { location: a.closest('section, header, footer') ? (a.closest('section, header, footer').id || a.closest('section, header, footer').className.split(' ')[0]) : '' });
+      else if (a.classList.contains('js-wa')) track('whatsapp_click', {});
+      else if (a.matches('.demo__tabs [role="tab"]')) track('demo_workflow', { workflow: a.getAttribute('data-flow') });
+      else if (a.matches('a[href^="mailto:"]')) track('email_click', {});
+    });
+  }
+
   /* ----------------------------------------------------- netlify form -- */
   function briefForm() {
     var f = document.getElementById('brief-form');
@@ -1084,9 +1046,14 @@
       status.textContent = 'That didn\u2019t send. Please try again, or email contact@ravelsoftworks.com.';
     }
 
+    var shownAt = Date.now();
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       if (busy || !f.reportValidity()) return;
+      // Bots: anything that fills the hidden field, or submits faster than a person
+      // could type, gets the thank-you screen but is never sent.
+      var trap = f.querySelector('input[name="bot-field"]');
+      if ((trap && trap.value) || Date.now() - shownAt < 3000) { thank(); return; }
       busy = true;
       btn.disabled = true;
       btn.textContent = 'Sending\u2026';
@@ -1106,23 +1073,27 @@
       }).then(function (res) {
         clearTimeout(timer);
         if (!res.ok) throw new Error(res.status);
-        // Replace the form with an unmistakable confirmation.
-        var done = document.createElement('div');
-        done.className = 'brief-form brief-form--done';
-        done.setAttribute('role', 'status');
-        done.tabIndex = -1;
-        var name = (f.querySelector('#f-name').value || '').trim().split(/\s+/)[0];
-        done.innerHTML = '<p class="brief-form__done-h"></p><p class="brief-form__done-p"></p>';
-        done.firstChild.textContent = name ? 'Thanks, ' + name + '. Your brief is with us.' : 'Thanks. Your brief is with us.';
-        done.lastChild.textContent = 'We\u2019ll reply within one business day from contact@ravelsoftworks.com.';
-        f.replaceWith(done);
-        done.focus({ preventScroll: true });
-        done.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+        track('generate_lead', { services: new FormData(f).getAll('services').join(', ') });
+        thank();
       }).catch(function () {
         clearTimeout(timer);
         if (busy) fail();
       });
     });
+    function thank() {
+      // Replace the form with an unmistakable confirmation.
+      var done = document.createElement('div');
+      done.className = 'brief-form brief-form--done';
+      done.setAttribute('role', 'status');
+      done.tabIndex = -1;
+      var name = (f.querySelector('#f-name').value || '').trim().split(/\s+/)[0];
+      done.innerHTML = '<p class="brief-form__done-h"></p><p class="brief-form__done-p"></p>';
+      done.firstChild.textContent = name ? 'Thanks, ' + name + '. Your brief is with us.' : 'Thanks. Your brief is with us.';
+      done.lastChild.textContent = 'We\u2019ll reply within one business day from contact@ravelsoftworks.com.';
+      f.replaceWith(done);
+      done.focus({ preventScroll: true });
+      done.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+    }
   }
 
   /* ------------------------------------------------------------ mount -- */
@@ -1138,15 +1109,14 @@
     });
   })();
   heroPlate();
-  whyPlate();
   builder();
   nav();
   whatsapp();
-  illos();
-  photos();
   demo();
   problemsFx();
   scrollFx();
   briefForm();
+  consent();
+  tracking();
   if (window.ScrollCraft) window.ScrollCraft.mount(document.body);
 })();
