@@ -32,7 +32,7 @@ for (const [name, vp] of [['desk', { width: 1440, height: 900 }], ['phone', { wi
   await p.screenshot({ path: `${out}i-${name}-5form.png` });
   await p.fill('#f-name', 'Test'); await p.fill('#f-email', 'test@example.com');
   await p.click('#brief-form button[type=submit]'); await p.waitForTimeout(800);
-  console.log(name, 'status:', await p.textContent('#form-status'));
+  console.log(name, 'result:', await p.evaluate(() => (document.querySelector('.brief-form--done') || document.getElementById('form-status')).innerText.replace(/\n+/g, ' ')));
   if (name !== 'desk') {
     await p.click('.nav__burger'); await p.waitForTimeout(250);
     await p.screenshot({ path: `${out}i-${name}-6menu.png` });

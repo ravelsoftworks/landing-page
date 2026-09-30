@@ -106,8 +106,8 @@
 
 <main id="main">
 
-  <!-- HERO: pinned. The exploded R settles into one structure. -->
-  <section class="hero" id="top" data-sc-act="pin" data-sc-span="1.6">
+  <!-- HERO: pinned. A network of cubes fuses into the three pieces, which join into the R. -->
+  <section class="hero" id="top" data-sc-act="pin" data-sc-span="2.4">
     <div data-sc-stage class="hero__stage">
       <div class="hero__copy">
         <p class="badge"><span class="badge__dot" aria-hidden="true"></span> Software, AI &amp; IT engineering · Bengaluru</p>
@@ -141,13 +141,14 @@
     </ul>
   </section>
 
-  <!-- PROBLEMS: navy, the statement wipes in -->
-  <section class="section section--navy" id="problems" data-sc-act="flow">
+  <!-- PROBLEMS: the words light up as you scroll; the three pains start as loose
+       parts and slide together into one panel, then the answer lands -->
+  <section class="section section--navy problems" id="problems" data-sc-act="flow">
     <div class="sc-wrap">
-      <div class="statement" data-sc-reveal="up" data-sc-reveal-at="0.08 0.34">
+      <div class="statement">
         <h2 class="h2 h2--xl">Most businesses don&rsquo;t need more software. They need the right parts, fitted&nbsp;together.</h2>
       </div>
-      <ul class="pains" data-sc-in data-sc-stagger="70">
+      <ul class="pains">
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10v6H4zM10 14h10v6H10z"/><path d="M14 7h3v4M10 17H7v-4"/></svg>
           <h3>Copy, paste, repeat</h3>
@@ -164,20 +165,19 @@
           <p>You bought licences. Nobody is quite sure what they are for&nbsp;yet.</p>
         </li>
       </ul>
-      <p class="pains__turn" data-sc-in>We fix exactly this, as one team: the software, the AI, and the IT underneath&nbsp;it.</p>
+      <p class="pains__turn">We fix exactly this, as one team: the software, the AI, and the IT underneath&nbsp;it.</p>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES: the heading holds while the cards stack up on top of each other -->
   <section class="section" id="services" data-sc-act="flow">
-    <div class="sc-wrap">
-      <header class="head">
+    <div class="sc-wrap services">
+      <header class="head services__head">
         <h2 class="h2">What we build</h2>
         <p class="head__dek">Six services. Hire us for one, or let one team handle the whole&nbsp;stack.</p>
       </header>
-
-      <div class="cards">
-        <article class="card card--wide" data-sc-in>
+      <div class="stack">
+        <article class="card" style="--i:0">
           <div class="card__media"><svg data-illo="software" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>Custom software development</h3>
@@ -185,7 +185,7 @@
             <ul class="tags"><li>Web &amp; mobile apps</li><li>SaaS</li><li>Internal tools</li><li>APIs</li></ul>
           </div>
         </article>
-        <article class="card card--wide" data-sc-in>
+        <article class="card" style="--i:1">
           <div class="card__media"><svg data-illo="team" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>Software development outsourcing</h3>
@@ -193,7 +193,7 @@
             <ul class="tags"><li>Dedicated teams</li><li>Staff augmentation</li><li>Project delivery</li></ul>
           </div>
         </article>
-        <article class="card" data-sc-in>
+        <article class="card" style="--i:2">
           <div class="card__media"><svg data-illo="automation" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>AI automation &amp; agents</h3>
@@ -201,7 +201,7 @@
             <ul class="tags"><li>AI agents</li><li>Workflow automation</li><li>Document processing</li></ul>
           </div>
         </article>
-        <article class="card" data-sc-in>
+        <article class="card" style="--i:3">
           <div class="card__media"><svg data-illo="ai" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>AI implementation</h3>
@@ -209,7 +209,7 @@
             <ul class="tags"><li>LLM integration</li><li>RAG</li><li>AI assistants</li><li>Evaluation</li></ul>
           </div>
         </article>
-        <article class="card" data-sc-in>
+        <article class="card" style="--i:4">
           <div class="card__media"><svg data-illo="data" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>Integrations &amp; data</h3>
@@ -217,7 +217,7 @@
             <ul class="tags"><li>CRM &amp; ERP</li><li>Data pipelines</li><li>Dashboards</li></ul>
           </div>
         </article>
-        <article class="card" data-sc-in>
+        <article class="card" style="--i:5">
           <div class="card__media"><svg data-illo="cloud" viewBox="-160 -120 320 220" aria-hidden="true"></svg></div>
           <div class="card__body">
             <h3>Cloud, DevOps &amp; IT support</h3>
@@ -229,41 +229,47 @@
     </div>
   </section>
 
-  <!-- AI AUTOMATION: a running example, not a screenshot -->
-  <section class="section section--tint" id="automation" data-sc-act="flow">
-    <div class="sc-wrap">
-      <header class="head head--split">
-        <h2 class="h2">What AI automation looks like</h2>
-        <p class="head__dek">Pick a workflow and watch an agent run it. Every step is logged, and anything unusual goes to a&nbsp;person.</p>
-      </header>
-
-      <div class="demo">
-        <div class="demo__tabs" role="tablist" aria-label="Example workflows">
-          <button role="tab" aria-selected="true" aria-controls="demo-panel" id="tab-onboarding" data-flow="onboarding">Client onboarding</button>
-          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-invoices" data-flow="invoices" tabindex="-1">Invoices</button>
-          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-leads" data-flow="leads" tabindex="-1">Sales leads</button>
-          <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-support" data-flow="support" tabindex="-1">Support inbox</button>
+  <!-- AI AUTOMATION: pinned; scrolling runs the agent, one workflow after another -->
+  <section class="section--tint automation" id="automation" data-sc-act="pin" data-sc-span="3.2">
+    <div data-sc-stage class="automation__stage">
+      <div class="sc-wrap">
+        <header class="head head--split">
+          <h2 class="h2">What AI automation looks like</h2>
+          <p class="head__dek">Scroll to watch an agent run each workflow, or pick one. Every step is logged, and anything unusual goes to a&nbsp;person.</p>
+        </header>
+        <div class="demo">
+          <div class="demo__tabs" role="tablist" aria-label="Example workflows">
+            <button role="tab" aria-selected="true" aria-controls="demo-panel" id="tab-onboarding" data-flow="onboarding">Client onboarding</button>
+            <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-invoices" data-flow="invoices" tabindex="-1">Invoices</button>
+            <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-leads" data-flow="leads" tabindex="-1">Sales leads</button>
+            <button role="tab" aria-selected="false" aria-controls="demo-panel" id="tab-support" data-flow="support" tabindex="-1">Support inbox</button>
+          </div>
+          <div class="demo__panel" id="demo-panel" role="tabpanel" aria-labelledby="tab-onboarding">
+            <div class="demo__col">
+              <p class="demo__label">Trigger</p>
+              <p class="demo__trigger" id="demo-trigger"></p>
+            </div>
+            <div class="demo__col demo__col--agent">
+              <p class="demo__label">Agent steps</p>
+              <ol class="demo__steps" id="demo-steps"></ol>
+            </div>
+            <div class="demo__col">
+              <p class="demo__label">Outcome</p>
+              <p class="demo__outcome" id="demo-outcome"></p>
+              <p class="demo__human" id="demo-human"></p>
+            </div>
+          </div>
+          <div class="demo__bar" aria-hidden="true"><span></span></div>
+          <p class="demo__note">Example workflow for illustration. Yours is designed around your own systems and&nbsp;rules.</p>
         </div>
-        <div class="demo__panel" id="demo-panel" role="tabpanel" aria-labelledby="tab-onboarding">
-          <div class="demo__col">
-            <p class="demo__label">Trigger</p>
-            <p class="demo__trigger" id="demo-trigger"></p>
-          </div>
-          <div class="demo__col demo__col--agent">
-            <p class="demo__label">Agent steps</p>
-            <ol class="demo__steps" id="demo-steps"></ol>
-          </div>
-          <div class="demo__col">
-            <p class="demo__label">Outcome</p>
-            <p class="demo__outcome" id="demo-outcome"></p>
-            <p class="demo__human" id="demo-human"></p>
-          </div>
-        </div>
-        <p class="demo__note">Example workflow for illustration. Yours is designed around your own systems and&nbsp;rules.</p>
       </div>
+    </div>
+  </section>
 
+  <section class="section section--tint teams" aria-labelledby="teams-h" data-sc-act="flow">
+    <div class="sc-wrap">
       <div class="depts">
-        <h3 class="h3">Work we can automate, by team</h3>
+        <h3 class="h3" id="teams-h">Work we can automate, by team</h3>
         <dl class="depts__grid">
           <div><dt>Finance</dt><dd>Invoice capture and matching, payment reminders, expense checks, month-end reports.</dd></div>
           <div><dt>Sales</dt><dd>Lead qualification, CRM updates, follow-up drafts, proposal generation.</dd></div>
@@ -340,6 +346,7 @@
   <!-- PROCESS: lateral travel through the stages -->
   <section class="section--navy process" id="process" data-sc-act="pan" data-sc-span="2.4">
     <div data-sc-stage class="process__stage">
+      <div class="process__bar" aria-hidden="true"><span></span></div>
       <div class="rail" data-sc-pan="0.04">
         <div class="rail__lead">
           <h2 class="h2">How an engagement runs</h2>
@@ -403,9 +410,11 @@
     <div class="sc-wrap tools__inner">
       <h2 class="tools__h" id="tools-h">Tools we build with</h2>
       <!-- TODO(confirm): keep only tools the team genuinely uses -->
-      <ul class="tools__list">
+      <div class="tools__track">
+        <ul class="tools__list">
         <li>Python</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Node.js</li><li>Flutter</li><li>PostgreSQL</li><li>OpenAI</li><li>Anthropic</li><li>Google Gemini</li><li>LangGraph</li><li>n8n</li><li>AWS</li><li>Azure</li><li>Google Cloud</li><li>Docker</li>
       </ul>
+      </div>
     </div>
   </section>
 
