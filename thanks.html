@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) with Consent Mode v2: analytics cookies stay off until
+     the visitor accepts on the home page; the choice is remembered on every page. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var ravelConsent = 'denied';
+  try { if (localStorage.getItem('ravel_consent') === 'granted') ravelConsent = 'granted'; } catch (e) {}
+  gtag('consent', 'default', {
+    analytics_storage: ravelConsent,
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  gtag('js', new Date());
+  // local development and testing never report into the live property
+  if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) gtag('config', 'G-DLK9LW97V6');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DLK9LW97V6"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brief received | Ravel Softworks</title>

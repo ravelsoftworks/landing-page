@@ -974,32 +974,21 @@
   }
 
   /* --------------------------------------------------------- analytics --
-     Google Analytics 4, loaded only after the visitor accepts (UK/EU consent
-     rules). Until a measurement ID is set here nothing loads and no banner shows. */
-  // GA4 measurement ID (Google's own snippet is not pasted in: it would load before consent)
-  var GA_ID = 'G-DLK9LW97V6';
+     The Google tag itself is in each page's <head> with Consent Mode v2, so it is
+     always present (and detectable) but sets no analytics cookies until the
+     visitor accepts. This only runs the banner and passes the choice on. */
   var CONSENT_KEY = 'ravel_consent';
   function track(name, params) {
     if (window.gtag) window.gtag('event', name, params || {});
   }
-  function loadGA() {
-    if (!GA_ID || window.gtag) return;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { anonymize_ip: true });
-    var sc = document.createElement('script');
-    sc.async = true;
-    sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
-    document.head.appendChild(sc);
+  function setConsent(choice) {
+    if (window.gtag) window.gtag('consent', 'update', { analytics_storage: choice });
   }
   function consent() {
-    if (!GA_ID) return;
     var box = document.getElementById('consent');
     var settings = document.querySelector('.js-cookie-settings');
     var saved = null;
     try { saved = localStorage.getItem(CONSENT_KEY); } catch (e) { /* storage blocked: ask each visit */ }
-    if (saved === 'granted') loadGA();
     if (!saved && box) box.hidden = false;
     if (settings) {
       settings.hidden = false;
@@ -1011,8 +1000,7 @@
       var choice = b.getAttribute('data-consent');
       try { localStorage.setItem(CONSENT_KEY, choice); } catch (err) { /* ignore */ }
       box.hidden = true;
-      if (choice === 'granted') loadGA();
-      else if (saved === 'granted') location.reload();   // withdrawing consent: drop the already-loaded tag
+      setConsent(choice);
     });
   }
   // The actions that matter for winning clients

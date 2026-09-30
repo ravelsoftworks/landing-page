@@ -1,15 +1,22 @@
 import { chromium } from 'playwright-core';
 const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const consentCalls = () => (window.dataLayer || []).map(a => Array.from(a)).filter(a => a[0] === 'consent').map(a => a[1] + ':' + a[2].analytics_storage);
 for (const choice of ['granted', 'denied']) {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
-  const p = await ctx.newPage(); const errs = []; const ga = [];
+  const p = await ctx.newPage(); const errs = []; let tagLoaded = false;
   p.on('pageerror', e => errs.push(e.message));
-  await p.route(u => u.hostname.endsWith('googletagmanager.com') || u.hostname.endsWith('google-analytics.com'), r => { ga.push(r.request().url().split('?')[0] + '?' + (new URL(r.request().url()).searchParams.get('id') || '')); r.fulfill({ status: 200, contentType: 'text/javascript', body: '' }); });
-  await p.goto('http://localhost:4500/', { waitUntil: 'networkidle' });
-  const beforeBanner = await p.isVisible('#consent'), beforeGA = ga.length;
-  await p.click(`[data-consent="${choice}"]`); await p.waitForTimeout(600);
-  const tagId = await p.evaluate(() => (window.dataLayer || []).map(a => Array.from(a)).filter(a => a[0] === 'config').map(a => a[1]));
-  console.log(choice, '| banner shown first:', beforeBanner, '| GA before click:', beforeGA, '| GA after click:', ga, '| configured id:', JSON.stringify(tagId), errs);
+  p.on('response', r => { if (r.url().includes('googletagmanager.com/gtag/js')) tagLoaded = r.status(); });
+  await p.goto('http://localhost:4500/', { waitUntil: 'networkidle' }); await p.waitForTimeout(1500);
+  const gaCookieBefore = (await ctx.cookies()).some(c => c.name.startsWith('_ga'));
+  await p.click(`[data-consent="${choice}"]`); await p.waitForTimeout(2500);
+  const gaCookieAfter = (await ctx.cookies()).some(c => c.name.startsWith('_ga'));
+  console.log(choice, '| tag loaded on first visit:', tagLoaded, '| _ga cookie before choice:', gaCookieBefore, '| after:', gaCookieAfter, '| consent calls:', JSON.stringify(await p.evaluate(consentCalls)), errs);
+  await p.reload({ waitUntil: 'networkidle' });
+  console.log('   after reload default:', JSON.stringify(await p.evaluate(consentCalls)), '| banner shown again:', await p.isVisible('#consent'));
+  for (const page of ['thanks.html', 'privacy.html']) {
+    await p.goto('http://localhost:4500/' + page, { waitUntil: 'networkidle' });
+    console.log('   ', page, 'has tag:', await p.evaluate(() => !!document.querySelector('script[src*="gtag/js?id=G-DLK9LW97V6"]')), '| default:', JSON.stringify(await p.evaluate(consentCalls)));
+  }
   await ctx.close();
 }
 await b.close();

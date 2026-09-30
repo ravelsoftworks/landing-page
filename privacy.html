@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) with Consent Mode v2: analytics cookies stay off until
+     the visitor accepts on the home page; the choice is remembered on every page. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var ravelConsent = 'denied';
+  try { if (localStorage.getItem('ravel_consent') === 'granted') ravelConsent = 'granted'; } catch (e) {}
+  gtag('consent', 'default', {
+    analytics_storage: ravelConsent,
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  gtag('js', new Date());
+  // local development and testing never report into the live property
+  if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) gtag('config', 'G-DLK9LW97V6');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DLK9LW97V6"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy | Ravel Softworks</title>
@@ -34,7 +51,7 @@
   <p>When you use the &ldquo;Start a project&rdquo; form, we receive what you type: your name, work email, company, country, the services you pick, and your brief. We use it only to reply to you and to discuss your project. The form is processed by Netlify, which hosts this site.</p>
 
   <h2>Analytics cookies</h2>
-  <p>With your permission, we use Google Analytics to understand which pages are useful and how people find us. It sets cookies and collects information such as the pages you view, your approximate location and your device type. If you decline, Google Analytics is not loaded. You can change your choice at any time with &ldquo;Cookie settings&rdquo; at the bottom of the home page.</p>
+  <p>With your permission, we use Google Analytics to understand which pages are useful and how people find us. If you accept, it sets cookies and collects information such as the pages you view, your approximate location and your device type. If you decline, no analytics cookies are set; Google may still receive basic, cookie-free signals (for example that a page was viewed) which it uses to estimate overall traffic. You can change your choice at any time with &ldquo;Cookie settings&rdquo; at the bottom of the home page.</p>
 
   <h2>What we do not do</h2>
   <ul>
