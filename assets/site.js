@@ -38,14 +38,20 @@
   // A box from (x,y,z) with size (w,d,h). Draws the three faces the viewer sees.
   function box(parent, x, y, z, w, d, h, u, pal, opt) {
     opt = opt || {};
-    var g = el('g', {}, parent);
+    var g = el('g', opt.opacity != null ? { opacity: opt.opacity } : {}, parent);
     var X = x + w, Y = y + d, Z = z + h;
     var stroke = opt.stroke || 'rgba(12,27,54,0.38)';
     var sw = opt.sw || 0.7;
-    var fill = function (c) { return opt.line ? '#F3F1EB' : c; };
-    el('polygon', { points: pts([[x, Y, z], [X, Y, z], [X, Y, Z], [x, Y, Z]], u), fill: fill(pal.l), stroke: stroke, 'stroke-width': sw, 'stroke-linejoin': 'round' }, g);
-    el('polygon', { points: pts([[X, y, z], [X, Y, z], [X, Y, Z], [X, y, Z]], u), fill: fill(pal.r), stroke: stroke, 'stroke-width': sw, 'stroke-linejoin': 'round' }, g);
-    el('polygon', { points: pts([[x, y, Z], [X, y, Z], [X, Y, Z], [x, Y, Z]], u), fill: fill(pal.t), stroke: stroke, 'stroke-width': sw, 'stroke-linejoin': 'round' }, g);
+    var fill = function (c) { return opt.ghost ? 'none' : opt.line ? '#F3F1EB' : c; };
+    var dash = opt.ghost ? { 'stroke-dasharray': opt.dash || '2 2' } : {};
+    function face(points, c) {
+      var a = { points: pts(points, u), fill: fill(c), stroke: stroke, 'stroke-width': sw, 'stroke-linejoin': 'round' };
+      for (var k in dash) a[k] = dash[k];
+      el('polygon', a, g);
+    }
+    face([[x, Y, z], [X, Y, z], [X, Y, Z], [x, Y, Z]], pal.l);
+    face([[X, y, z], [X, Y, z], [X, Y, Z], [X, y, Z]], pal.r);
+    face([[x, y, Z], [X, y, Z], [X, Y, Z], [x, Y, Z]], pal.t);
     if (opt.grid) {
       // unit seams, so a slab still reads as blocks
       var seam = { stroke: 'rgba(12,27,54,0.16)', 'stroke-width': 0.6 };
@@ -696,6 +702,158 @@
     render();
   }
 
+  /* ------------------------------------------------------- block icons --
+     The brand's icon set: small isometric compositions in the logo's colours.
+     Each one means something (a stack, a duplicate, a missing part), never
+     decoration. Dashed outlines are blocks that are missing or still to come. */
+  // One cube per icon, with the symbol drawn onto its faces in the same isometric view.
+  var BU = 9, BS = 2.2, B0 = -1.1;                   // unit, cube size, cube corner
+  // a point on a face, (a, b) in 0..1: a runs along the face, b runs down it
+  function onFace(face, a, b, lift) {
+    var x = B0 + a * BS, y = B0 + a * BS, top = B0 + BS;
+    if (face === 'top') return iso(B0 + a * BS, B0 + b * BS, top + (lift || 0), BU);
+    if (face === 'left') return iso(x, B0 + BS, top - b * BS, BU);     // the +y face, lit side
+    return iso(B0 + BS, y, top - b * BS, BU);                             // 'right': the +x face
+  }
+  function faceLine(g, face, list, attrs) {
+    var d = list.map(function (q, i) { var P = onFace(face, q[0], q[1]); return (i ? 'L' : 'M') + P[0].toFixed(2) + ' ' + P[1].toFixed(2); }).join(' ');
+    var o = { d: d, fill: 'none', stroke: '#F3F1EB', 'stroke-width': 1.3, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
+    for (var k in attrs) o[k] = attrs[k];
+    return el('path', o, g);
+  }
+  function faceRing(face, cx, cy, rx, ry, from, to) {
+    var out = [], n = 28; from = from || 0; to = to == null ? 6.2832 : to;
+    for (var i = 0; i <= n; i++) { var t = from + (to - from) * i / n; out.push([cx + Math.cos(t) * rx, cy + Math.sin(t) * ry]); }
+    return out;
+  }
+  function cube(g, pal, o) { box(g, B0, B0, B0, BS, BS, BS, BU, pal, o.solid); }
+  var BICONS = {
+    speed: function (g, o) {        // reply fast: a clock-faced cube
+      cube(g, PAL.teal, o);
+      faceLine(g, 'left', faceRing('left', 0.5, 0.52, 0.34, 0.34));
+      faceLine(g, 'left', [[0.5, 0.52], [0.5, 0.3]]);
+      faceLine(g, 'left', [[0.5, 0.52], [0.68, 0.6]]);
+      [[0.5, 0.2], [0.82, 0.52], [0.5, 0.84], [0.18, 0.52]].forEach(function (q) { faceLine(g, 'left', [q, [q[0] + (0.5 - q[0]) * 0.12, q[1] + (0.52 - q[1]) * 0.12]], { 'stroke-width': 1 }); });
+    },
+    team: function (g, o) {         // software, AI and IT as one stack
+      box(g, -0.8, -0.8, -0.9, 1.6, 1.6, 0.6, 9, PAL.teal, o.solid);
+      box(g, -0.8, -0.8, -0.3, 1.6, 1.6, 0.6, 9, PAL.blue, o.solid);
+      box(g, -0.8, -0.8, 0.3, 1.6, 1.6, 0.6, 9, PAL.indigo, o.solid);
+    },
+    world: function (g, o) {        // a globe-faced cube
+      cube(g, PAL.blue, o);
+      faceLine(g, 'left', faceRing('left', 0.5, 0.5, 0.36, 0.36));
+      faceLine(g, 'left', faceRing('left', 0.5, 0.5, 0.15, 0.36), { 'stroke-width': 1 });
+      faceLine(g, 'left', [[0.14, 0.5], [0.86, 0.5]], { 'stroke-width': 1 });
+      faceLine(g, 'left', [[0.21, 0.32], [0.79, 0.32]], { 'stroke-width': 0.9 });
+      faceLine(g, 'left', [[0.21, 0.68], [0.79, 0.68]], { 'stroke-width': 0.9 });
+      faceLine(g, 'right', [[0.12, 0.5], [0.88, 0.5]], { 'stroke-width': 0.9, opacity: 0.7 });
+    },
+    lock: function (g, o) {         // a padlock made of a block
+      // the shackle stands on the top face, in the cube's middle plane
+      var pts3 = [];
+      for (var i = 0; i <= 20; i++) {
+        var t = Math.PI * i / 20;
+        pts3.push(iso(B0 + BS * (0.5 - Math.cos(t) * 0.26), B0 + BS * 0.5, B0 + BS + Math.sin(t) * BS * 0.42, BU));
+      }
+      var leg = function (k) { return iso(B0 + BS * (0.5 + k * 0.26), B0 + BS * 0.5, B0 + BS, BU); };
+      var d = 'M' + leg(-1).join(' ') + ' ' + pts3.map(function (q) { return 'L' + q[0].toFixed(2) + ' ' + q[1].toFixed(2); }).join(' ') + ' L' + leg(1).join(' ');
+      el('path', { d: d, fill: 'none', stroke: '#8A93A8', 'stroke-width': 2.4, 'stroke-linecap': 'round' }, g);
+      cube(g, PAL.indigo, o);
+      faceLine(g, 'left', faceRing('left', 0.5, 0.42, 0.1, 0.1), { fill: '#F3F1EB', 'stroke-width': 0.8 });
+      faceLine(g, 'left', [[0.5, 0.48], [0.5, 0.7]], { 'stroke-width': 2 });
+    },
+    copy: function (g, o) {         // the same block, re-typed again and again
+      box(g, -1.6, 0, 0, 1, 1, 1, 9, PAL.blue, o.solid);
+      box(g, -0.2, 0, 0, 1, 1, 1, 9, PAL.blue, o.ghost('2 2', 0.8));
+      box(g, 1.2, 0, 0, 1, 1, 1, 9, PAL.blue, o.ghost('2 2', 0.5));
+    },
+    gap: function (g, o) {          // a roadmap: a route across the top, ending at a flag
+      cube(g, PAL.indigo, o);
+      var route = [[0.14, 0.86], [0.42, 0.66], [0.3, 0.4], [0.62, 0.3], [0.8, 0.14]];
+      var d = route.map(function (q, i) { var P = onFace('top', q[0], q[1]); return (i ? 'L' : 'M') + P[0].toFixed(2) + ' ' + P[1].toFixed(2); }).join(' ');
+      el('path', { d: d, fill: 'none', stroke: '#F3F1EB', 'stroke-width': 1.2, 'stroke-dasharray': '2 1.6', 'stroke-linecap': 'round' }, g);
+      route.slice(0, 4).forEach(function (q) { var P = onFace('top', q[0], q[1]); el('circle', { cx: P[0], cy: P[1], r: 1.1, fill: '#F3F1EB' }, g); });
+      var base = onFace('top', 0.8, 0.14), tip = onFace('top', 0.8, 0.14, BS * 0.62);
+      el('line', { x1: base[0], y1: base[1], x2: tip[0], y2: tip[1], stroke: '#F3F1EB', 'stroke-width': 1.2, 'stroke-linecap': 'round' }, g);
+      var f1 = [tip[0], tip[1]], f2 = [tip[0] + 6.5, tip[1] + 2.4], f3 = [tip[0], tip[1] + 4.6];
+      el('polygon', { points: [f1, f2, f3].map(function (q) { return q.join(','); }).join(' '), fill: '#3DD6C3' }, g);
+    },
+    idle: function (g, o) {         // AI: a sparkle on one face, a circuit on the other
+      cube(g, PAL.teal, o);
+      var c = [0.5, 0.5], r1 = 0.34, r2 = 0.09, star = [];
+      for (var i = 0; i < 8; i++) { var t = -Math.PI / 2 + i * Math.PI / 4, r = i % 2 ? r2 : r1; star.push([c[0] + Math.cos(t) * r, c[1] + Math.sin(t) * r]); }
+      star.push(star[0]);
+      faceLine(g, 'left', star, { fill: '#F3F1EB', 'stroke-width': 0.6 });
+      faceLine(g, 'right', [[0.2, 0.3], [0.5, 0.3], [0.5, 0.7], [0.8, 0.7]], { 'stroke-width': 1 });
+      faceLine(g, 'right', [[0.5, 0.5], [0.8, 0.5]], { 'stroke-width': 1 });
+      [[0.2, 0.3], [0.8, 0.7], [0.8, 0.5]].forEach(function (q) { var P = onFace('right', q[0], q[1]); el('circle', { cx: P[0], cy: P[1], r: 1.2, fill: '#F3F1EB' }, g); });
+    }
+  };
+  function blockIcons() {
+    document.querySelectorAll('[data-bicon]').forEach(function (span) {
+      var draw = BICONS[span.getAttribute('data-bicon')];
+      if (!draw) return;
+      var dark = span.classList.contains('bicon--dark');
+      var line = dark ? '#A9B4C8' : 'rgba(12,27,54,0.55)';
+      var svg = el('svg', { viewBox: '-24 -22 48 44', 'aria-hidden': 'true', focusable: 'false' }, span);
+      var g = el('g', { transform: 'translate(0,4)' }, svg);
+      draw(g, {
+        solid: { stroke: dark ? 'rgba(12,27,54,0.5)' : 'rgba(12,27,54,0.3)', sw: 0.6 },
+        ghost: function (d, alpha) { return { ghost: true, dash: d, stroke: line, sw: 0.9, opacity: alpha }; }
+      });
+      // fit the drawing: centre it in a square frame, so every icon fills its box the same way
+      var bb = g.getBBox(), side = Math.max(bb.width, bb.height) + 3;
+      if (side > 3) svg.setAttribute('viewBox', [(bb.x + bb.width / 2 - side / 2).toFixed(1), (bb.y + bb.height / 2 - side / 2).toFixed(1), side.toFixed(1), side.toFixed(1)].join(' '));
+    });
+  }
+
+  /* ---------------------------------------------------- process stack --
+     "How we work" builds as you move through it: each stage lays one more
+     course onto the plinth, so by Run there is a finished structure. */
+  function processStack() {
+    var svg = document.querySelector('.process__stack');
+    var section = document.getElementById('process');
+    if (!svg || !section) return;
+    var u = 22, root = el('g', {}, svg);
+    box(root, -1.6, -1.2, -0.3, 3.2, 2.4, 0.3, u, { t: '#243B66', r: '#1A2E52', l: '#13223F' }, { stroke: 'rgba(169,180,200,0.35)', sw: 0.7 });
+    var pals = [PAL.teal, PAL.blue, PAL.indigo, PAL.deep];
+    var courses = pals.map(function (pal, i) {
+      var g = el('g', { class: 'process__course' }, root);
+      box(g, -1.4, -1, i * 0.72, 2.8, 2, 0.72, u, pal, { stroke: 'rgba(12,27,54,0.45)', sw: 0.7 });
+      return g;
+    });
+    // Fit the stack into the free band between the nav and the top of the cards,
+    // so no card ever slides over it, whatever the window height.
+    var stage = svg.parentNode, card = section.querySelector('.stage');
+    var bar = section.querySelector('.process__bar');
+    function place() {
+      var st = stage.getBoundingClientRect(), cr = card.getBoundingClientRect(), br = bar.getBoundingClientRect();
+      var navH = document.getElementById('nav').offsetHeight;
+      var above = (cr.top - st.top) - navH - 20;            // between the nav and the cards
+      var below = st.bottom - br.bottom - 16;                // under the progress line
+      var useBelow = below > above;
+      var room = useBelow ? below : above;
+      var h = Math.max(0, Math.min(130, room));
+      svg.style.display = h < 44 ? 'none' : '';
+      svg.style.height = h + 'px';
+      svg.style.width = (h * 160 / 150) + 'px';
+      svg.style.top = (useBelow ? (br.bottom - st.top) + 8 : navH + (room - h) / 2 + 10) + 'px';
+    }
+    place(); addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    function frame() {
+      var r = section.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) {
+        var travel = Math.max(r.height - innerHeight, 1);
+        var p = reduce ? 1 : clamp01(-r.top / travel);
+        courses.forEach(function (g, i) { g.classList.toggle('is-on', p >= i * 0.25 + 0.02); });
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    frame();
+  }
+
   /* --------------------------------------------------------------- nav -- */
   function nav() {
     var bar = document.getElementById('nav');
@@ -1076,8 +1234,15 @@
       done.tabIndex = -1;
       var name = (f.querySelector('#f-name').value || '').trim().split(/\s+/)[0];
       done.innerHTML = '<p class="brief-form__done-h"></p><p class="brief-form__done-p"></p>';
-      done.firstChild.textContent = name ? 'Thanks, ' + name + '. Your brief is with us.' : 'Thanks. Your brief is with us.';
-      done.lastChild.textContent = 'We\u2019ll reply within one business day from contact@ravelsoftworks.com.';
+      // the brief lands as a small stack of blocks
+      var art = el('svg', { class: 'brief-form__blocks', viewBox: '-40 -58 80 76', 'aria-hidden': 'true' }, null);
+      [PAL.teal, PAL.blue, PAL.indigo].forEach(function (pal, i) {
+        var g = el('g', { class: 'drop', style: 'animation-delay:' + (i * 140) + 'ms' }, art);
+        box(g, -1.1, -1.1, i * 0.62, 2.2, 2.2, 0.62, 13, pal, { stroke: 'rgba(12,27,54,0.4)', sw: 0.6 });
+      });
+      done.insertBefore(art, done.firstChild);
+      done.querySelector('.brief-form__done-h').textContent = name ? 'Thanks, ' + name + '. Your brief is with us.' : 'Thanks. Your brief is with us.';
+      done.querySelector('.brief-form__done-p').textContent = 'We\u2019ll reply within one business day from contact@ravelsoftworks.com.';
       f.replaceWith(done);
       done.focus({ preventScroll: true });
       done.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
@@ -1099,6 +1264,8 @@
   heroPlate();
   builder();
   nav();
+  blockIcons();
+  processStack();
   whatsapp();
   demo();
   problemsFx();
